@@ -17,12 +17,22 @@ dependencies {
 	implementation files("libs/RobotCore.jar")
 }
 
+String versionstr
+String releasever
+
+if(System.getenv('VERSION')) {
+	versionstr = System.getenv('VERSION')
+	releasever = versionstr.substring(versionstr.indexOf('v') + 1)
+} else {
+	releasever = ''
+}
+
 publishing {
 	publications {
 		maven(MavenPublication) {
 			groupId = 'com.ftc11392'
 			artifactId = 'sequoia'
-			version = '0.1.0'
+			version = releasever
 
 			from components.java
 		}
@@ -47,12 +57,8 @@ bintray {
 		userOrg = 'highoakrobotics'
 		vcsUrl = 'https://github.com/HighOakRobotics/Sequoia'
 		version {
-			if(System.getenv('VERSION')) {
-				String versionstr = System.getenv('VERSION')
-				String releasever = versionstr.substring(versionstr.indexOf('v') + 1)
-				name = releasever
-				desc = 'Release version v' + releasever + "of Sequoia. Refer to the GitHub page's readme for usage instructions. Please open an issue for any bugs."
-			}
+			name = releasever
+			desc = 'Release version v' + releasever + "of Sequoia. Refer to the GitHub page's readme for usage instructions. Please open an issue for any bugs."
 			released  = new Date()
 		}
 	}
