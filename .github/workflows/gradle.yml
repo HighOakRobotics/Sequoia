@@ -30,6 +30,7 @@ jobs:
           name: Sequoia.jar
           path: build/libs/Sequoia.jar
       - name: Upload sources jar file as artifact
+        uses: actions/upload-artifact@v1
         if: success()
         with:
           name: Sequoia-sources.jar
