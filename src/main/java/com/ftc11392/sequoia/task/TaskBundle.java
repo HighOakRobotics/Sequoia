@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 
-public class TaskBundle extends Task {
+public abstract class TaskBundle extends Task {
 	private static final HashSet<Task> bundledTasks = new HashSet<>();
 
 	public TaskBundle(Telemetry telemetry) {
@@ -40,5 +40,5 @@ public class TaskBundle extends Task {
 		requireUnbundled(Arrays.asList(tasks));
 	}
 
-
+	public abstract void addTasks(Task... tasks);
 }
