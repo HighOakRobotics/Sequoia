@@ -6,9 +6,10 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.concurrent.TimeUnit;
 
 public class Task {
-	private HashSet<Subsystem> subsystems = new HashSet<>();
+	protected HashSet<Subsystem> subsystems = new HashSet<>();
 	private Telemetry telemetry;
 
 	private boolean interruptible = true;
@@ -49,5 +50,12 @@ public class Task {
 
 	public final boolean hasSubsystem(Subsystem requirement) {
 		return getSubsystems().contains(requirement);
+	}
+
+	public ParallelRaceBundle withTimeout(long amount, TimeUnit unit) {
+		return new ParallelRaceBundle(telemetry, this, new WaitTask(amount, unit, telemetry));
+	}
+	public ParallelRaceBundle withTimeout(int seconds) {
+		return withTimeout(seconds, TimeUnit.SECONDS);
 	}
 }
