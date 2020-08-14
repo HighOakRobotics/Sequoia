@@ -22,6 +22,7 @@ jobs:
         run: ./gradlew build
       - name: Upload to Bintray with Gradle
         env:
-          BINTRAY_API_KEY: {{ secrets.BINTRAY_API_KEY }}
+          BINTRAY_API_KEY: ${{ secrets.BINTRAY_API_KEY }}
           BINTRAY_USER: stinggyray
+          VERSION: ${{ github.ref }}
         run: ./gradlew bintrayUpload

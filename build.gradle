@@ -47,8 +47,10 @@ bintray {
 		userOrg = 'highoakrobotics'
 		vcsUrl = 'https://github.com/HighOakRobotics/Sequoia'
 		version {
-			name = '0.1.0'
-			desc = '0.1.0'
+			if(System.getenv('VERSION')) {
+				name = System.getenv('VERSION').substring(1)
+				desc = 'Release version v' + System.getenv('VERSION').substring(1) + "of Sequoia. Refer to the GitHub page's readme for usage instructions. Please open an issue for any bugs."
+			}
 			released  = new Date()
 		}
 	}
