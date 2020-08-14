@@ -8,7 +8,7 @@ public class InstantTask extends Task {
 	public InstantTask(Runnable toRun, Telemetry telemetry) {
 		super(telemetry);
 		this.toRun = toRun;
-		super.running = false;
+		running = false;
 	}
 
 	@Override
