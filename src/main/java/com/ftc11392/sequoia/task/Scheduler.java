@@ -1,7 +1,6 @@
 package com.ftc11392.sequoia.task;
 
 import com.ftc11392.sequoia.subsystem.Subsystem;
-import com.ftc11392.sequoia.triggers.Trigger;
 import com.ftc11392.sequoia.util.OpModeState;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -101,7 +100,7 @@ public final class Scheduler {
 					subsystem.initLoop();
 				break;
 			case RUN_LOOP:
-				for (Subsystem subsystem :subsystems)
+				for (Subsystem subsystem : subsystems)
 					subsystem.loop();
 				break;
 			default:
@@ -141,10 +140,13 @@ public final class Scheduler {
 		for (Task task : toCancel)
 			cancel(task);
 
+		toSchedule.clear();
+		toCancel.clear();
+
 		// Now check all subsystems to see if they have been used - any unrequired subsystems
 		// will have the default method called.
 		for (Subsystem subsystem : subsystems) {
-			if(subsystem.getDefaultTask() != null) {
+			if (subsystem.getDefaultTask() != null) {
 				schedule(subsystem.getDefaultTask());
 			}
 		}

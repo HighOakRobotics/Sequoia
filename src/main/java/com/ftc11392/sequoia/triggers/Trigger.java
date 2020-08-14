@@ -10,6 +10,7 @@ public class Trigger {
 		NOTHING,
 		SCHEDULE
 	}
+
 	public enum EdgeBehavior {
 		NOTHING,
 		SCHEDULE,
@@ -32,9 +33,9 @@ public class Trigger {
 
 	/**
 	 * Schedules the task only once when the input changes from off to on.
-	 *
+	 * <p>
 	 * In other words, this is a rising-edge monostable circuit.
-	 *
+	 * <p>
 	 * WHILE OFF : Nothing
 	 * OFF -> ON : Schedules task once
 	 * WHILE ON  : Nothing
@@ -49,9 +50,9 @@ public class Trigger {
 
 	/**
 	 * Schedules the task only once when the input changes from on to off.
-	 *
+	 * <p>
 	 * In other words, this is a falling-edge monostable circuit.
-	 *
+	 * <p>
 	 * WHILE OFF : Nothing
 	 * OFF -> ON : Nothing
 	 * WHILE ON  : Nothing
@@ -66,7 +67,7 @@ public class Trigger {
 
 	/**
 	 * Schedules the task only once when the input changes from off to on, and cancels the task when the input changes from on to off.
-	 *
+	 * <p>
 	 * WHILE OFF : Nothing
 	 * OFF -> ON : Schedules task once
 	 * WHILE ON  : Nothing
@@ -81,7 +82,7 @@ public class Trigger {
 
 	/**
 	 * Schedules the task only once when the input changes from on to off, and cancels the task when the input changes from off to on.
-	 *
+	 * <p>
 	 * WHILE OFF : Nothing
 	 * OFF -> ON : Cancels task
 	 * WHILE ON  : Nothing
@@ -96,10 +97,11 @@ public class Trigger {
 
 	/**
 	 * Big boy method for consolidating all rising/falling/while logic.
-	 * @param task The task to schedule / cancel.
-	 * @param off The intended behavior while off.
-	 * @param rising The intended behavior upon rising edge.
-	 * @param on The intended behavior while on.
+	 *
+	 * @param task    The task to schedule / cancel.
+	 * @param off     The intended behavior while off.
+	 * @param rising  The intended behavior upon rising edge.
+	 * @param on      The intended behavior while on.
 	 * @param falling The intended behavior upon falling edge.
 	 * @return The Trigger, for convenience.
 	 */
@@ -113,18 +115,18 @@ public class Trigger {
 			public void run() {
 				boolean active = poll();
 
-				if(active && lastActive) {
+				if (active && lastActive) {
 					// While on
-					switch(on) {
+					switch (on) {
 						case NOTHING:
 							break;
 						case SCHEDULE:
 							scheduler.schedule(task);
 							break;
 					}
-				} else if(!active && !lastActive) {
+				} else if (!active && !lastActive) {
 					// While off
-					switch(off) {
+					switch (off) {
 						case NOTHING:
 							break;
 						case SCHEDULE:
@@ -133,7 +135,7 @@ public class Trigger {
 					}
 				} else if (active) {
 					// Rising edge
-					switch(rising) {
+					switch (rising) {
 						case NOTHING:
 							break;
 						case SCHEDULE:
@@ -145,7 +147,7 @@ public class Trigger {
 					}
 				} else {
 					// Falling edge
-					switch(falling) {
+					switch (falling) {
 						case NOTHING:
 							break;
 						case SCHEDULE:

@@ -13,7 +13,7 @@ public class Task {
 
 	private boolean interruptible = true;
 
-	private boolean running;
+	protected boolean running;
 
 	public Task(Telemetry telemetry) {
 		this.telemetry = telemetry;
@@ -48,6 +48,6 @@ public class Task {
 	}
 
 	public final boolean hasSubsystem(Subsystem requirement) {
-	    return getSubsystems().contains(requirement);
-    }
+		return getSubsystems().contains(requirement);
+	}
 }
