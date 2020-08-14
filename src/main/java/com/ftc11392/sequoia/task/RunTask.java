@@ -1,15 +1,17 @@
 package com.ftc11392.sequoia.task;
 
 import com.ftc11392.sequoia.subsystem.Subsystem;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class RunTask extends Task{
-    protected final Runnable m_toRun;
+    protected final Runnable run;
 
-    public RunTask(Runnable toRun, Subsystem requirements){
-        m_toRun = toRun;
+    public RunTask(Telemetry telemetry, Runnable run, Subsystem requirements){
+        super(telemetry);
+        this.run = run;
         addSubsystems(requirements);
     }
 
     @Override
-    public void execute(){m_toRun.run()}
+    public void loop(){ run.run(); }
 }
