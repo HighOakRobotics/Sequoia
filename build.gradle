@@ -48,8 +48,10 @@ bintray {
 		vcsUrl = 'https://github.com/HighOakRobotics/Sequoia'
 		version {
 			if(System.getenv('VERSION')) {
-				name = System.getenv('VERSION').substring(1)
-				desc = 'Release version v' + System.getenv('VERSION').substring(1) + "of Sequoia. Refer to the GitHub page's readme for usage instructions. Please open an issue for any bugs."
+				versionstr = System.getenv('VERSION')
+				releasever = versionstr.substring(versionstr.indexOf('v') + 1)
+				name = releasever
+				desc = 'Release version v' + releasever + "of Sequoia. Refer to the GitHub page's readme for usage instructions. Please open an issue for any bugs."
 			}
 			released  = new Date()
 		}
