@@ -58,7 +58,7 @@ bintray {
 		vcsUrl = 'https://github.com/HighOakRobotics/Sequoia'
 		version {
 			name = releasever
-			desc = 'Release version v' + releasever + "of Sequoia. Refer to the GitHub page's readme for usage instructions. Please open an issue for any bugs."
+			desc = 'Release version v' + releasever + " of Sequoia. Refer to the GitHub page's readme for usage instructions. Please open an issue for any bugs."
 			released  = new Date()
 		}
 	}
