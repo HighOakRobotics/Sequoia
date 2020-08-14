@@ -10,7 +10,7 @@ import java.util.function.DoubleSupplier;
 
 public class PIDFTask extends Task {
 
-    protected PIDFController controller;
+    protected final PIDFController controller;
     protected DoubleSupplier feedback, setpoint;
     protected DoubleConsumer output;
 
