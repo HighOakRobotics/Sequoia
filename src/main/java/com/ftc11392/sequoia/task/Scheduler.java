@@ -2,15 +2,9 @@ package com.ftc11392.sequoia.task;
 
 import com.ftc11392.sequoia.subsystem.Subsystem;
 import com.ftc11392.sequoia.util.OpModeState;
-
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public final class Scheduler {
 	private static final Scheduler instance = new Scheduler();
@@ -71,6 +65,10 @@ public final class Scheduler {
 		for (Task task : scheduledTasks) {
 			cancel(task);
 		}
+	}
+
+	public boolean isScheduled(Task... tasks) {
+		return scheduledTasks.containsAll(Arrays.asList(tasks));
 	}
 
 	public void addBehavior(Runnable behavior) {

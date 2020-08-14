@@ -12,7 +12,6 @@ public class ScheduleTask extends Task {
 	public ScheduleTask(Telemetry telemetry, Task... tasks) {
 		super(telemetry);
 		toSchedule.addAll(Arrays.asList(tasks));
-		running = false;
 	}
 
 	@Override
@@ -23,4 +22,24 @@ public class ScheduleTask extends Task {
 		}
 	}
 
+	@Override
+	public void loop() {
+		running = false;
+		Scheduler instance = Scheduler.getInstance();
+		for(Task task : toSchedule) {
+			if(instance.isScheduled(task)) {
+				running = true;
+			}
+		}
+	}
+
+	@Override
+	public void stop(boolean interrupted) {
+		Scheduler instance = Scheduler.getInstance();
+		if (interrupted) {
+			for(Task task : toSchedule) {
+				instance.cancel(task);
+			}
+		}
+	}
 }
