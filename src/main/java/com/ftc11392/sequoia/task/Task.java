@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class Task {
-	private HashSet<Subsystem> subsystems = new HashSet<>();
+	protected HashSet<Subsystem> subsystems = new HashSet<>();
 	private Telemetry telemetry;
 
 	private boolean interruptible = true;
