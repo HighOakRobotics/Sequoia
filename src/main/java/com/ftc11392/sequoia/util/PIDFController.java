@@ -33,13 +33,13 @@ public class PIDFController {
 
     public double control(double setpoint, double feedback) {
         long time = clock.getNanoseconds();
-        long timeMs = clock.getMillis();
+        double timeSec = clock.getSeconds();
         double timeInterval = time - lastTime;
 
         double error = setpoint - feedback;
         double integral = lastIntegral + error * timeInterval;
         double derivative = (error - lastError) / timeInterval;
-        double feedforward = (1.0/(int)timeMs) * setpoint;
+        double feedforward = (1/timeSec) * setpoint;
 
         double output = kP*error + kI*integral + kD*derivative + kF*feedforward + bias;
 

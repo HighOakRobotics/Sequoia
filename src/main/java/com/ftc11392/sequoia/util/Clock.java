@@ -20,4 +20,6 @@ public class Clock {
 	public long getMillis() {
 		return getTime(TimeUnit.MILLISECONDS);
 	}
+
+	public double getSeconds() { return getTime(TimeUnit.SECONDS); }
 }
