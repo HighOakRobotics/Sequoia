@@ -6,27 +6,39 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ParallelTaskBundle extends TaskBundle {
-	private final Set<Task> tasks = new HashSet<>(); // Task task, Boolean isRunning
+public class ParallelDeadlineBundle extends TaskBundle {
+	private final Set<Task> tasks = new HashSet<>();
+	private Task deadline;
 
-	public ParallelTaskBundle(Telemetry telemetry, Task... tasks) {
+	public ParallelDeadlineBundle(Telemetry telemetry, Task deadline, Task... tasks) {
 		super(telemetry);
+		
+		this.deadline = deadline;
+		
 		addTasks(tasks);
+		if (!this.tasks.contains(deadline)) {
+			addTasks(deadline);
+		}
 	}
 
+	public void setDeadline(Task deadline) {
+		if(tasks.contains(deadline)) {
+			addTasks(deadline);
+		}
+		this.deadline = deadline;
+	}
 
-	@Override
 	public void addTasks(Task... tasks) {
 		requireUnbundled(tasks);
 
-		if (running) {
+		if(running) {
 			throw new TaskException("Tasks cannot be added to a TaskBundle while the bundle is running.");
 		}
 
 		registerBundledTasks(tasks);
 
-		for (Task task : tasks) {
-			if (!Collections.disjoint(task.getSubsystems(), subsystems)) {
+		for(Task task : tasks) {
+			if(!Collections.disjoint(task.getSubsystems(), subsystems)) {
 				throw new TaskException("Multiple tasks in a parallel bundle cannot require the same subsystems");
 			}
 
@@ -38,37 +50,33 @@ public class ParallelTaskBundle extends TaskBundle {
 	@Override
 	public void init() {
 		running = true;
-		for (Task task : tasks) {
+		for(Task task : tasks) {
 			task.init();
 		}
 	}
 
 	@Override
 	public void loop() {
-		for (Task task: tasks) {
-			if (!task.isRunning()) {
+		for(Task task : tasks) {
+			if(!task.isRunning()) {
 				continue;
 			}
 			task.loop();
-			if (!task.isRunning()) {
+			if(!task.isRunning()) {
 				task.stop(false);
-			}
-		}
-	}
-
-	@Override
-	public void stop(boolean interrupted) {
-		if (interrupted) {
-			for (Task task : tasks) {
-				if (task.isRunning()) {
-					task.stop(true);
+				if(task == deadline) {
+					running = false;
 				}
 			}
 		}
 	}
 
 	@Override
-	public boolean isRunning() {
-		return tasks.stream().anyMatch(Task::isRunning);
+	public void stop(boolean interrupted) {
+		for(Task task : tasks) {
+			if(task.isRunning()) {
+				task.stop(true);
+			}
+		}
 	}
 }
