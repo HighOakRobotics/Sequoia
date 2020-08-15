@@ -6,6 +6,9 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * A {@link Task} that does nothing but stop running after a given amount of time.
+ */
 public class WaitTask extends Task {
 	private Clock clock = new Clock();
 	private final TimeUnit unit;

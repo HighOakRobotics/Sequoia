@@ -3,6 +3,10 @@ package com.ftc11392.sequoia.task;
 import com.ftc11392.sequoia.subsystem.Subsystem;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+/**
+ * A {@link Task} that runs a {@link Runnable} once when it is initialized and another Runnable once
+ * when it is interrupted. This task runs perpetually until interrupted.
+ */
 public class StartEndTask extends Task {
     protected final Runnable init;
     protected final Runnable stop;
@@ -11,6 +15,7 @@ public class StartEndTask extends Task {
         super(telemetry);
         this.init = init;
         this.stop = stop;
+        this.running = true;
 
         addSubsystems(subsystems);
     }

@@ -10,6 +10,12 @@ public final class Scheduler {
 	private static final Scheduler instance = new Scheduler();
 	private Telemetry telemetry;
 
+	/**
+	 * Provides the Scheduler with its requirements.
+	 *
+	 * @param telemetry a Telemetry object from {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} that allows
+	 *                  the scheduler to send messages to the Driver Station
+	 */
 	public void init(Telemetry telemetry) {
 		this.telemetry = telemetry;
 	}
@@ -19,14 +25,28 @@ public final class Scheduler {
 		return instance;
 	}
 
+	/**
+	 * Adds the given subsystems ({@link Subsystem}) to the Scheduler.
+	 *
+	 * @param subsystems the subsystems to add
+	 */
 	public void registerSubsystem(Subsystem... subsystems) {
 		this.subsystems.addAll(Arrays.asList(subsystems));
 	}
 
+	/**
+	 * Clears all subsystems ({@link Subsystem}).
+	 */
 	public void clearSubsystems() {
 		subsystems.clear();
 	}
 
+	/**
+	 * Runs the <code>init()</code> method of the given {@link Task}. Binds the Task to its required
+	 * subsystems ({@link Subsystem})
+	 *
+	 * @param task the Task to cancel
+	 */
 	private void initTask(Task task) {
 		scheduledTasks.add(task);
 		task.init();
@@ -35,6 +55,11 @@ public final class Scheduler {
 		}
 	}
 
+	/**
+	 * Schedules the given {@link Task}.
+	 *
+	 * @param task the Task to schedule
+	 */
 	public void schedule(Task task) {
 		if (inLoop) {
 			toSchedule.add(task);
@@ -54,6 +79,11 @@ public final class Scheduler {
 		initTask(task);
 	}
 
+	/**
+	 * Cancels the given {@link Task}.
+	 *
+	 * @param task the Task to cancel
+	 */
 	public void cancel(Task task) {
 		if (inLoop) {
 			toCancel.add(task);
@@ -65,6 +95,9 @@ public final class Scheduler {
 		bindings.keySet().removeAll(task.getSubsystems());
 	}
 
+	/**
+	 * Cancels all tasks ({@link Task})
+	 */
 	public void cancelAll() {
 		for (Task task : scheduledTasks) {
 			cancel(task);
@@ -92,6 +125,12 @@ public final class Scheduler {
 	private final Map<Subsystem, Task> bindings = new HashMap<>();
 	private boolean inLoop;
 
+	/**
+	 * Run this method regularly. Runs {@link Subsystem} periodics,
+	 * polls behaviors, and schedules tasks ({@link Task}).
+	 *
+	 * @param state the state of the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} right now
+	 */
 	public void loop(OpModeState state) {
 		// Run this in a loop
 

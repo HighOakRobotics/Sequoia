@@ -1,5 +1,9 @@
 package com.ftc11392.sequoia.task;
 
+/**
+ * Usually the default {@link Task} in a {@link com.ftc11392.sequoia.subsystem.Subsystem} that does not
+ * have its own default behavior.
+ */
 public class DefaultTask extends Task {
 	public DefaultTask() {
 		super(null);

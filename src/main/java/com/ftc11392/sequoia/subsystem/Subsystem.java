@@ -10,10 +10,20 @@ public abstract class Subsystem {
 
 	Task defaultTask = new DefaultTask();
 
+	/**
+	 * Runs periodically in the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} run loop.
+	 */
 	public abstract void runPeriodic();
 
+	/**
+	 * Runs periodically in the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} init loop.
+	 */
 	public abstract void initPeriodic();
 
+	/**
+	 * Runs when the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} <code>stop()</code> method
+	 * is called. Usually cleanup actions.
+	 */
 	public abstract void stop();
 
 	public void setDefaultTask(Task defaultTask) {

@@ -8,6 +8,9 @@ import java.util.function.BooleanSupplier;
 
 import static com.ftc11392.sequoia.task.TaskBundle.requireUnbundled;
 
+/**
+ * A {@link Task} that schedules a Task based on the value a boolean.
+ */
 public class ConditionalTask extends SwitchTask {
 
 	public ConditionalTask(Telemetry telemetry, Task ifTrue, Task ifFalse, BooleanSupplier checker) {

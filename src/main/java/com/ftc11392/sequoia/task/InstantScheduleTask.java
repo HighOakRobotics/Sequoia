@@ -6,6 +6,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Schedules the given Tasks ({@link Task}). Stops immediately.
+ */
 public class InstantScheduleTask extends Task {
 	private final Set<Task> toSchedule = new HashSet<>();
 

@@ -38,10 +38,21 @@ public abstract class Task {
 		return interruptible;
 	}
 
+	/**
+	 * Performs the actions that a Task needs on initialization.
+	 */
 	public abstract void init();
 
+	/**
+	 * Performs the actions that a Task needs to run periodically while its running.
+	 */
 	public abstract void loop();
 
+	/**
+	 * Performs the actions that a Task needs when stopping, usually cleanup actions.
+	 *
+	 * @param interrupted whether the Task has been interrupted or not
+	 */
 	public abstract void stop(boolean interrupted);
 
 	public boolean isRunning() {

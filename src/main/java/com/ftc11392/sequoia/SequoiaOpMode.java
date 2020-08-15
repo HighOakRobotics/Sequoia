@@ -43,7 +43,20 @@ public abstract class SequoiaOpMode extends OpMode {
 		Scheduler.getInstance().clearSubsystems();
 	}
 
+	/**
+	 * Adds the given subsystems ({@link Subsystem}) to the {@link Scheduler}.
+	 *
+	 * @return the subsystems to add to the Scheduler
+	 */
 	public abstract Subsystem[] addSubsystems();
+
+	/**
+	 * Place triggers that should run during the initialization loop here.
+	 */
 	public abstract void initTriggers();
+
+	/**
+	 * Place triggers that should run during the run loop here.
+	 */
 	public abstract void runTriggers();
 }

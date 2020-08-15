@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * TaskBundle that runs a bundle of tasks in parallel. Once any of them finish, this task finishes, interrupting all other tasks.
+ * A {@link TaskBundle} that runs a bundle of tasks ({@link Task}) in parallel. Once any of them finish,
+ * this task finishes, interrupting all other tasks.
  */
 public class ParallelRaceBundle extends TaskBundle {
 	private final Set<Task> tasks = new HashSet<>();
