@@ -4,6 +4,7 @@ name: Gradle CI w/ Release
 
 on:
   create:
+    branches: [ master ]
     tags:
       - v*
 
