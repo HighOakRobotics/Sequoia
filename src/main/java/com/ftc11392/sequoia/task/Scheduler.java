@@ -23,6 +23,10 @@ public final class Scheduler {
 		this.subsystems.addAll(Arrays.asList(subsystems));
 	}
 
+	public void clearSubsystems() {
+		subsystems.clear();
+	}
+
 	private void initTask(Task task) {
 		scheduledTasks.add(task);
 		task.init();
@@ -95,11 +99,11 @@ public final class Scheduler {
 		switch (state) {
 			case INIT_LOOP:
 				for (Subsystem subsystem : subsystems)
-					subsystem.initLoop();
+					subsystem.initPeriodic();
 				break;
 			case RUN_LOOP:
 				for (Subsystem subsystem : subsystems)
-					subsystem.loop();
+					subsystem.runPeriodic();
 				break;
 			default:
 				// Should there be a SchedulerException?

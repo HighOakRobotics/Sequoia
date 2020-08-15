@@ -10,11 +10,11 @@ public class Subsystem {
 
 	Task defaultTask = new DefaultTask();
 
-	public void loop() {
+	public void runPeriodic() {
 
 	}
 
-	public void initLoop() {
+	public void initPeriodic() {
 
 	}
 

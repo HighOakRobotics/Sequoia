@@ -18,15 +18,15 @@ public abstract class PIDFSubsystem extends Subsystem{
     }
 
     @Override
-    public void loop() {
-        super.loop();
+    public void runPeriodic() {
+        super.runPeriodic();
         if (enabled)
             useOutput(controller.control(getFeedback(), setpoint));
     }
 
     @Override
-    public void initLoop() {
-        super.initLoop();
+    public void initPeriodic() {
+        super.initPeriodic();
         if (enabled)
             useOutput(controller.control(getFeedback(), setpoint));
     }
