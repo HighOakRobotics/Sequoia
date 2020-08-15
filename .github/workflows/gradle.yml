@@ -4,7 +4,8 @@
 name: Gradle CI
 
 on:
-  push: [ master ]
+  push:
+    branches: [ master ]
   pull_request:
 
 jobs:
