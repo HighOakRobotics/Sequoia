@@ -102,6 +102,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public abstract class <span class="typeNameLabel">Subsystem</span>
 extends java.lang.Object</pre>
+<div class="block">An abstraction above hardware devices.</div>
 </section>
 <section class="summary">
 <ul class="blockList">
@@ -122,8 +123,17 @@ extends java.lang.Object</pre>
 </thead>
 <tbody>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">Subsystem</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.firstinspires.ftc.robotcore.external.Telemetry)">Subsystem</a></span>&#8203;(org.firstinspires.ftc.robotcore.external.Telemetry&nbsp;telemetry)</code></th>
+<td class="colLast">
+<div class="block">Instantiates a Subsystem with a DefaultTask</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.firstinspires.ftc.robotcore.external.Telemetry,com.ftc11392.sequoia.task.Task)">Subsystem</a></span>&#8203;(org.firstinspires.ftc.robotcore.external.Telemetry&nbsp;telemetry,
+<a href="../task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a>&nbsp;defaultTask)</code></th>
+<td class="colLast">
+<div class="block">Instantiates a Subsystem</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -204,8 +214,28 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <section class="detail">
-<h3><a id="&lt;init&gt;()">Subsystem</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Subsystem</span>()</div>
+<h3><a id="&lt;init&gt;(org.firstinspires.ftc.robotcore.external.Telemetry,com.ftc11392.sequoia.task.Task)">Subsystem</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Subsystem</span>&#8203;(<span class="arguments">org.firstinspires.ftc.robotcore.external.Telemetry&nbsp;telemetry,
+<a href="../task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a>&nbsp;defaultTask)</span></div>
+<div class="block">Instantiates a Subsystem</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>telemetry</code> - <code>Telemetry</code> from an <code>OpMode</code>
+                                   for the task to be able to send information to a Driver Station.</dd>
+<dd><code>defaultTask</code> - the default Task of the Subsystem</dd>
+</dl>
+</section>
+</li>
+<li class="blockList">
+<section class="detail">
+<h3><a id="&lt;init&gt;(org.firstinspires.ftc.robotcore.external.Telemetry)">Subsystem</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Subsystem</span>&#8203;(<span class="arguments">org.firstinspires.ftc.robotcore.external.Telemetry&nbsp;telemetry)</span></div>
+<div class="block">Instantiates a Subsystem with a DefaultTask</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>telemetry</code> - <code>Telemetry</code> from an <code>OpMode</code>
+                                   for the task to be able to send information to a Driver Station.</dd>
+</dl>
 </section>
 </li>
 </ul>

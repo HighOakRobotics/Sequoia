@@ -78,10 +78,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/task/Scheduler.html#addBehavior(java.lang.Runnable)">addBehavior(Runnable)</a></span> - Method in class com.ftc11392.sequoia.task.<a href="com/ftc11392/sequoia/task/Scheduler.html" title="class in com.ftc11392.sequoia.task">Scheduler</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/SequoiaOpMode.html#addSubsystems()">addSubsystems()</a></span> - Method in class com.ftc11392.sequoia.<a href="com/ftc11392/sequoia/SequoiaOpMode.html" title="class in com.ftc11392.sequoia">SequoiaOpMode</a></dt>
-<dd>
-<div class="block">Adds the given subsystems (<a href="com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><code>Subsystem</code></a>) to the <a href="com/ftc11392/sequoia/task/Scheduler.html" title="class in com.ftc11392.sequoia.task"><code>Scheduler</code></a>.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/task/Task.html#addSubsystems(com.ftc11392.sequoia.subsystem.Subsystem...)">addSubsystems(Subsystem...)</a></span> - Method in class com.ftc11392.sequoia.task.<a href="com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a></dt>
 <dd>
 <div class="block">Adds <a href="com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><code>Subsystem</code></a> to the Task as dependencies for it to be scheduled.</div>
@@ -531,13 +527,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">A <a href="com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><code>Subsystem</code></a> that uses a <a href="com/ftc11392/sequoia/util/PIDFController.html" title="class in com.ftc11392.sequoia.util"><code>PIDFController</code></a> to control itself.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#%3Cinit%3E(com.ftc11392.sequoia.util.PIDFController)">PIDFSubsystem(PIDFController)</a></span> - Constructor for class com.ftc11392.sequoia.subsystem.<a href="com/ftc11392/sequoia/subsystem/PIDFSubsystem.html" title="class in com.ftc11392.sequoia.subsystem">PIDFSubsystem</a></dt>
-<dd>
-<div class="block">Instantiates a PIDFSubsystem with an initial setpoint of 0.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#%3Cinit%3E(com.ftc11392.sequoia.util.PIDFController,double)">PIDFSubsystem(PIDFController, double)</a></span> - Constructor for class com.ftc11392.sequoia.subsystem.<a href="com/ftc11392/sequoia/subsystem/PIDFSubsystem.html" title="class in com.ftc11392.sequoia.subsystem">PIDFSubsystem</a></dt>
+<dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#%3Cinit%3E(com.ftc11392.sequoia.util.PIDFController,double,org.firstinspires.ftc.robotcore.external.Telemetry)">PIDFSubsystem(PIDFController, double, Telemetry)</a></span> - Constructor for class com.ftc11392.sequoia.subsystem.<a href="com/ftc11392/sequoia/subsystem/PIDFSubsystem.html" title="class in com.ftc11392.sequoia.subsystem">PIDFSubsystem</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#%3Cinit%3E(com.ftc11392.sequoia.util.PIDFController,double,org.firstinspires.ftc.robotcore.external.Telemetry,com.ftc11392.sequoia.task.Task)">PIDFSubsystem(PIDFController, double, Telemetry, Task)</a></span> - Constructor for class com.ftc11392.sequoia.subsystem.<a href="com/ftc11392/sequoia/subsystem/PIDFSubsystem.html" title="class in com.ftc11392.sequoia.subsystem">PIDFSubsystem</a></dt>
 <dd>
 <div class="block">Instantiates a PIDFSubsystem.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#%3Cinit%3E(com.ftc11392.sequoia.util.PIDFController,org.firstinspires.ftc.robotcore.external.Telemetry)">PIDFSubsystem(PIDFController, Telemetry)</a></span> - Constructor for class com.ftc11392.sequoia.subsystem.<a href="com/ftc11392/sequoia/subsystem/PIDFSubsystem.html" title="class in com.ftc11392.sequoia.subsystem">PIDFSubsystem</a></dt>
+<dd>
+<div class="block">Instantiates a PIDFSubsystem with an initial setpoint of 0.</div>
 </dd>
 <dt><a href="com/ftc11392/sequoia/task/PIDFTask.html" title="class in com.ftc11392.sequoia.task"><span class="typeNameLink">PIDFTask</span></a> - Class in <a href="com/ftc11392/sequoia/task/package-summary.html">com.ftc11392.sequoia.task</a></dt>
 <dd>
@@ -724,9 +722,17 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/util/OpModeState.html#STOPPED">STOPPED</a></span> - com.ftc11392.sequoia.util.<a href="com/ftc11392/sequoia/util/OpModeState.html" title="enum in com.ftc11392.sequoia.util">OpModeState</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><span class="typeNameLink">Subsystem</span></a> - Class in <a href="com/ftc11392/sequoia/subsystem/package-summary.html">com.ftc11392.sequoia.subsystem</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/subsystem/Subsystem.html#%3Cinit%3E()">Subsystem()</a></span> - Constructor for class com.ftc11392.sequoia.subsystem.<a href="com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem">Subsystem</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">An abstraction above hardware devices.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/subsystem/Subsystem.html#%3Cinit%3E(org.firstinspires.ftc.robotcore.external.Telemetry)">Subsystem(Telemetry)</a></span> - Constructor for class com.ftc11392.sequoia.subsystem.<a href="com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem">Subsystem</a></dt>
+<dd>
+<div class="block">Instantiates a Subsystem with a DefaultTask</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/subsystem/Subsystem.html#%3Cinit%3E(org.firstinspires.ftc.robotcore.external.Telemetry,com.ftc11392.sequoia.task.Task)">Subsystem(Telemetry, Task)</a></span> - Constructor for class com.ftc11392.sequoia.subsystem.<a href="com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem">Subsystem</a></dt>
+<dd>
+<div class="block">Instantiates a Subsystem</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/ftc11392/sequoia/task/Task.html#subsystems">subsystems</a></span> - Variable in class com.ftc11392.sequoia.task.<a href="com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/ftc11392/sequoia/task/SwitchTask.html" title="class in com.ftc11392.sequoia.task"><span class="typeNameLink">SwitchTask</span></a> - Class in <a href="com/ftc11392/sequoia/task/package-summary.html">com.ftc11392.sequoia.task</a></dt>
