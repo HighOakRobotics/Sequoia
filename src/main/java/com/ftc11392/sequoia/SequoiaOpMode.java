@@ -11,7 +11,6 @@ public abstract class SequoiaOpMode extends OpMode {
 	public void init() {
 		resetScheduler();
 		Scheduler.getInstance().init(telemetry);
-		Scheduler.getInstance().registerSubsystem(addSubsystems());
 		initTriggers();
 	}
 
@@ -42,13 +41,6 @@ public abstract class SequoiaOpMode extends OpMode {
 		Scheduler.getInstance().clearBehaviors();
 		Scheduler.getInstance().clearSubsystems();
 	}
-
-	/**
-	 * Adds the given subsystems ({@link Subsystem}) to the {@link Scheduler}.
-	 *
-	 * @return the subsystems to add to the Scheduler
-	 */
-	public abstract Subsystem[] addSubsystems();
 
 	/**
 	 * Place triggers that should run during the initialization loop here.

@@ -187,9 +187,7 @@ public final class Scheduler {
 		// Now check all subsystems to see if they have been used - any unrequired subsystems
 		// will have the default method called.
 		for (Subsystem subsystem : subsystems) {
-			if (subsystem.getDefaultTask() != null) {
-				schedule(subsystem.getDefaultTask());
-			}
+			schedule(subsystem.getDefaultTask());
 		}
 	}
 }
