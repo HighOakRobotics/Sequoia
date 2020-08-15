@@ -36,7 +36,5 @@ public class WaitTask extends Task {
 	}
 
 	@Override
-	public void stop(boolean interrupted) {
-
-	}
+	public void stop(boolean interrupted) { }
 }

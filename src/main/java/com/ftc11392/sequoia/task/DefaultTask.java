@@ -6,19 +6,13 @@ public class DefaultTask extends Task {
 	}
 
 	@Override
-	public void init() {
-
-	}
+	public void init() { }
 
 	@Override
-	public void loop() {
-
-	}
+	public void loop() { }
 
 	@Override
-	public void stop(boolean interrupted) {
-
-	}
+	public void stop(boolean interrupted) { }
 
 	@Override
 	public boolean isRunning() {

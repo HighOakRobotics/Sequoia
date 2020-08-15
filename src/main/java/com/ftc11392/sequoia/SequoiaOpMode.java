@@ -5,8 +5,6 @@ import com.ftc11392.sequoia.task.Scheduler;
 import com.ftc11392.sequoia.util.OpModeState;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-import java.util.List;
-
 public abstract class SequoiaOpMode extends OpMode {
 
 	@Override

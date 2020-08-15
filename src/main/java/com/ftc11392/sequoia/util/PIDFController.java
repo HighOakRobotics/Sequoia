@@ -11,7 +11,11 @@ public class PIDFController {
 
     protected Clock clock;
     protected BiFunction<Double, Double, Double> feedforward;
-    protected double kP, kI, kD, kF, bias;
+    protected double kP;
+    protected double kI;
+    protected double kD;
+    protected double kF;
+    protected double bias;
     private double lastIntegral;
     private long lastTime = 0;
     private double lastError = 0.0;

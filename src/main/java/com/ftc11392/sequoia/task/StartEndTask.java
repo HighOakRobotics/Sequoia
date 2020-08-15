@@ -21,9 +21,7 @@ public class StartEndTask extends Task {
     }
 
     @Override
-    public void loop() {
-
-    }
+    public void loop() { }
 
     @Override
     public void stop(boolean interrupted) {

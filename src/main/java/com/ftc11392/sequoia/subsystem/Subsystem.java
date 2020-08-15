@@ -5,22 +5,16 @@ import com.ftc11392.sequoia.task.Task;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class Subsystem {
+public abstract class Subsystem {
 	Telemetry telemetry;
 
 	Task defaultTask = new DefaultTask();
 
-	public void runPeriodic() {
+	public abstract void runPeriodic();
 
-	}
+	public abstract void initPeriodic();
 
-	public void initPeriodic() {
-
-	}
-
-	public void stop() {
-
-	}
+	public abstract void stop();
 
 	public void setDefaultTask(Task defaultTask) {
 		this.defaultTask = defaultTask;
