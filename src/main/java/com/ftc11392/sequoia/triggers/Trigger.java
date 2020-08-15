@@ -37,9 +37,9 @@ public class Trigger {
 	 * In other words, this is a rising-edge monostable circuit.
 	 * <p>
 	 * WHILE OFF : Nothing
-	 * OFF -> ON : Schedules task once
+	 * OFF to ON : Schedules task once
 	 * WHILE ON  : Nothing
-	 * ON -> OFF : Nothing
+	 * ON to OFF : Nothing
 	 *
 	 * @param task The task to run.
 	 * @return This trigger, for chaining method calls.
@@ -54,9 +54,9 @@ public class Trigger {
 	 * In other words, this is a falling-edge monostable circuit.
 	 * <p>
 	 * WHILE OFF : Nothing
-	 * OFF -> ON : Nothing
+	 * OFF to ON : Nothing
 	 * WHILE ON  : Nothing
-	 * ON -> OFF : Schedules task once
+	 * ON to OFF : Schedules task once
 	 *
 	 * @param task The task to run.
 	 * @return This trigger, for chaining method calls.
@@ -69,9 +69,9 @@ public class Trigger {
 	 * Schedules the task only once when the input changes from off to on, and cancels the task when the input changes from on to off.
 	 * <p>
 	 * WHILE OFF : Nothing
-	 * OFF -> ON : Schedules task once
+	 * OFF to ON : Schedules task once
 	 * WHILE ON  : Nothing
-	 * ON -> OFF : Cancels task
+	 * ON to OFF : Cancels task
 	 *
 	 * @param task The task to run.
 	 * @return This trigger, for chaining method calls.
@@ -84,9 +84,9 @@ public class Trigger {
 	 * Schedules the task only once when the input changes from on to off, and cancels the task when the input changes from off to on.
 	 * <p>
 	 * WHILE OFF : Nothing
-	 * OFF -> ON : Cancels task
+	 * OFF to ON : Cancels task
 	 * WHILE ON  : Nothing
-	 * ON -> OFF : Schedules task once
+	 * ON to OFF : Schedules task once
 	 *
 	 * @param task The task to run.
 	 * @return This trigger, for chaining method calls.

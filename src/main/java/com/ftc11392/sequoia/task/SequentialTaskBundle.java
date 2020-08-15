@@ -5,6 +5,10 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A {@link Task} that schedules the given tasks in sequence. These tasks may not have conflicting
+ * subsystems ({@link com.ftc11392.sequoia.subsystem.Subsystem}).
+ */
 public class SequentialTaskBundle extends TaskBundle {
 	private final List<Task> tasks = new ArrayList<>();
 	private int currentTaskIndex = -1;

@@ -18,6 +18,11 @@ public abstract class TaskBundle extends Task {
 		return bundledTasks.contains(task);
 	}
 
+	/**
+	 * Adds the given tasks ({@link Task}) to the TaskBundle.
+	 *
+	 * @param tasks the tasks to add
+	 */
 	static void registerBundledTasks(Task... tasks) {
 		bundledTasks.addAll(Arrays.asList(tasks));
 	}

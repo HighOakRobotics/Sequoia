@@ -6,6 +6,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * A {@link TaskBundle} of a deadline {@link Task} and other tasks. The tasks are run in parallel until the
+ * deadline Task has stopped running, after which all tasks that are still running are interrupted.
+ */
 public class ParallelDeadlineBundle extends TaskBundle {
 	private final Set<Task> tasks = new HashSet<>();
 	private Task deadline;

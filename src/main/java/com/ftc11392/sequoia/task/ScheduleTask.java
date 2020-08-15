@@ -6,6 +6,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * A {@link Task} that schedules the given tasks on initialization. This Task stops running when all its tasks have
+ * stopped. If this Task in interrupted, it cancels all its remaining scheduled tasks.
+ */
 public class ScheduleTask extends Task {
 	private final Set<Task> toSchedule = new HashSet<>();
 

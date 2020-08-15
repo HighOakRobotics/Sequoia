@@ -5,6 +5,10 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import java.util.Map;
 import java.util.function.Supplier;
 
+/**
+ * A {@link Task} that, given a selection of tasks, runs one of the tasks based on the given
+ * selector.
+ */
 public class SwitchTask extends Task {
 	private final Map<Object, Task> mapping;
 	private final Supplier<Object> selector;

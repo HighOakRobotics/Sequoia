@@ -7,6 +7,11 @@ plugins {
 java {
 	sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 	withSourcesJar()
+	withJavadocJar()
+}
+
+javadoc {
+	destinationDir = new File(rootProject.projectDir, "docs/javadoc/.")
 }
 
 repositories {
@@ -15,6 +20,7 @@ repositories {
 
 dependencies {
 	implementation files("libs/RobotCore.jar")
+    implementation 'org.jetbrains:annotations:19.0.0'
 }
 
 String versionstr

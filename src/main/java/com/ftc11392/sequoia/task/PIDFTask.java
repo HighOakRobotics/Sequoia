@@ -8,6 +8,10 @@ import java.util.Arrays;
 import java.util.function.DoubleConsumer;
 import java.util.function.DoubleSupplier;
 
+/**
+ * A {@link Task} that controls a {@link Subsystem} using a {@link PIDFController}. This Task is perpetual until
+ * interrupted.
+ */
 public class PIDFTask extends Task {
 
     protected final PIDFController controller;
@@ -23,6 +27,7 @@ public class PIDFTask extends Task {
         this.setpoint = setpoint;
         this.output = output;
         this.subsystems.addAll(Arrays.asList(subsystems));
+        this.running = true;
     }
 
     public PIDFTask(Telemetry telemetry, PIDFController controller,
@@ -38,13 +43,11 @@ public class PIDFTask extends Task {
 
     @Override
     public void loop() {
-        super.loop();
         output.accept(controller.control(setpoint.getAsDouble(), feedback.getAsDouble()));
     }
 
     @Override
     public void stop(boolean interrupted) {
-        super.stop(interrupted);
         output.accept(0);
     }
 

@@ -6,6 +6,9 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import java.util.function.BooleanSupplier;
 
+/**
+ * Provides {@link BooleanSupplier} objects for various gamepad buttons and triggers.
+ */
 public class GamepadHandler {
 	private final Gamepad gamepad;
 

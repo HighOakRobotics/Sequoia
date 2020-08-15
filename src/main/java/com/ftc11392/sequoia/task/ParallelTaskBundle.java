@@ -6,6 +6,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * A {@link TaskBundle} that runs tasks ({@link Task}) in parallel. Stops running when all tasks have stopped
+ * running.
+ */
 public class ParallelTaskBundle extends TaskBundle {
 	private final Set<Task> tasks = new HashSet<>(); // Task task, Boolean isRunning
 
