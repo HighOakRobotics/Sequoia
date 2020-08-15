@@ -15,4 +15,14 @@ public class InstantTask extends Task {
 	public void init() {
 		toRun.run();
 	}
+
+	@Override
+	public void loop() {
+
+	}
+
+	@Override
+	public void stop(boolean interrupted) {
+
+	}
 }

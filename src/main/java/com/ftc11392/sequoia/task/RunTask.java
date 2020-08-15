@@ -13,5 +13,15 @@ public class RunTask extends Task{
 	}
 
 	@Override
+	public void init() {
+
+	}
+
+	@Override
 	public void loop(){ run.run(); }
+
+	@Override
+	public void stop(boolean interrupted) {
+
+	}
 }

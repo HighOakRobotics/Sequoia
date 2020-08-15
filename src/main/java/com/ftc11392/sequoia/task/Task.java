@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.concurrent.TimeUnit;
 
-public class Task {
+public abstract class Task {
 	protected HashSet<Subsystem> subsystems = new HashSet<>();
 	private Telemetry telemetry;
 
@@ -38,17 +38,11 @@ public class Task {
 		return interruptible;
 	}
 
-	public void init() {
+	public abstract void init();
 
-	}
+	public abstract void loop();
 
-	public void loop() {
-
-	}
-
-	public void stop(boolean interrupted) {
-
-	}
+	public abstract void stop(boolean interrupted);
 
 	public boolean isRunning() {
 		return running;

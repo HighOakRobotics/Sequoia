@@ -34,4 +34,9 @@ public class WaitTask extends Task {
 			super.running = false;
 		}
 	}
+
+	@Override
+	public void stop(boolean interrupted) {
+
+	}
 }

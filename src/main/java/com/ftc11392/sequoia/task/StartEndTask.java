@@ -17,13 +17,16 @@ public class StartEndTask extends Task {
 
     @Override
     public void init() {
-        super.init();
         init.run();
     }
 
     @Override
+    public void loop() {
+
+    }
+
+    @Override
     public void stop(boolean interrupted) {
-        super.stop(interrupted);
         stop.run();
     }
 }

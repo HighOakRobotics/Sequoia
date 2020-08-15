@@ -38,13 +38,11 @@ public class PIDFTask extends Task {
 
     @Override
     public void loop() {
-        super.loop();
         output.accept(controller.control(setpoint.getAsDouble(), feedback.getAsDouble()));
     }
 
     @Override
     public void stop(boolean interrupted) {
-        super.stop(interrupted);
         output.accept(0);
     }
 
