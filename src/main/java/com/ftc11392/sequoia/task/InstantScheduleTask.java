@@ -24,9 +24,13 @@ public class InstantScheduleTask extends Task {
 	}
 
 	@Override
-	public void loop() { }
+	public void loop() {
+		// Empty as there is no desired behavior here
+	}
 
 	@Override
-	public void stop(boolean interrupted) { }
+	public void stop(boolean interrupted) {
+		// Empty as there is no desired behavior here
+	}
 
 }
