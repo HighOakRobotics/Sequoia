@@ -193,7 +193,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Task.html#init--">init</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Task.html#init--">init</a></span>()</code>
+<div class="block">Performs the actions that a Task needs on initialization.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -205,11 +207,15 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Task.html#loop--">loop</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Task.html#loop--">loop</a></span>()</code>
+<div class="block">Performs the actions that a Task needs to run periodically while its running.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Task.html#stop-boolean-">stop</a></span>(boolean&nbsp;interrupted)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Task.html#stop-boolean-">stop</a></span>(boolean&nbsp;interrupted)</code>
+<div class="block">Performs the actions that a Task needs when stopping, usually cleanup actions.</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="../../../../com/ftc11392/sequoia/task/ParallelRaceBundle.html" title="class in com.ftc11392.sequoia.task">ParallelRaceBundle</a></code></td>
@@ -330,6 +336,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>init</h4>
 <pre>public abstract&nbsp;void&nbsp;init()</pre>
+<div class="block">Performs the actions that a Task needs on initialization.</div>
 </li>
 </ul>
 <a name="loop--">
@@ -339,6 +346,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>loop</h4>
 <pre>public abstract&nbsp;void&nbsp;loop()</pre>
+<div class="block">Performs the actions that a Task needs to run periodically while its running.</div>
 </li>
 </ul>
 <a name="stop-boolean-">
@@ -348,6 +356,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>stop</h4>
 <pre>public abstract&nbsp;void&nbsp;stop(boolean&nbsp;interrupted)</pre>
+<div class="block">Performs the actions that a Task needs when stopping, usually cleanup actions.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>interrupted</code> - whether the Task has been interrupted or not</dd>
+</dl>
 </li>
 </ul>
 <a name="isRunning--">

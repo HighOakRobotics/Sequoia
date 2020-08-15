@@ -154,11 +154,15 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html#initPeriodic--">initPeriodic</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html#initPeriodic--">initPeriodic</a></span>()</code>
+<div class="block">Runs periodically in the <code>OpMode</code> init loop.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html#runPeriodic--">runPeriodic</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html#runPeriodic--">runPeriodic</a></span>()</code>
+<div class="block">Runs periodically in the <code>OpMode</code> run loop.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -166,7 +170,10 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html#stop--">stop</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html#stop--">stop</a></span>()</code>
+<div class="block">Runs when the <code>OpMode</code> <code>stop()</code> method
+ is called.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -214,6 +221,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>runPeriodic</h4>
 <pre>public abstract&nbsp;void&nbsp;runPeriodic()</pre>
+<div class="block">Runs periodically in the <code>OpMode</code> run loop.</div>
 </li>
 </ul>
 <a name="initPeriodic--">
@@ -223,6 +231,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>initPeriodic</h4>
 <pre>public abstract&nbsp;void&nbsp;initPeriodic()</pre>
+<div class="block">Runs periodically in the <code>OpMode</code> init loop.</div>
 </li>
 </ul>
 <a name="stop--">
@@ -232,6 +241,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>stop</h4>
 <pre>public abstract&nbsp;void&nbsp;stop()</pre>
+<div class="block">Runs when the <code>OpMode</code> <code>stop()</code> method
+ is called. Usually cleanup actions.</div>
 </li>
 </ul>
 <a name="setDefaultTask-com.ftc11392.sequoia.task.Task-">

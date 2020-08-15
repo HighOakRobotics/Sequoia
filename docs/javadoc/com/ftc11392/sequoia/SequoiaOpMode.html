@@ -166,7 +166,9 @@ extends com.qualcomm.robotcore.eventloop.opmode.OpMode</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>abstract <a href="../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem">Subsystem</a>[]</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/ftc11392/sequoia/SequoiaOpMode.html#addSubsystems--">addSubsystems</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/ftc11392/sequoia/SequoiaOpMode.html#addSubsystems--">addSubsystems</a></span>()</code>
+<div class="block">Adds the given subsystems (<a href="../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><code>Subsystem</code></a>) to the <a href="../../../com/ftc11392/sequoia/task/Scheduler.html" title="class in com.ftc11392.sequoia.task"><code>Scheduler</code></a>.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -178,7 +180,9 @@ extends com.qualcomm.robotcore.eventloop.opmode.OpMode</pre>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/ftc11392/sequoia/SequoiaOpMode.html#initTriggers--">initTriggers</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/ftc11392/sequoia/SequoiaOpMode.html#initTriggers--">initTriggers</a></span>()</code>
+<div class="block">Place triggers that should run during the initialization loop here.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -186,7 +190,9 @@ extends com.qualcomm.robotcore.eventloop.opmode.OpMode</pre>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/ftc11392/sequoia/SequoiaOpMode.html#runTriggers--">runTriggers</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/ftc11392/sequoia/SequoiaOpMode.html#runTriggers--">runTriggers</a></span>()</code>
+<div class="block">Place triggers that should run during the run loop here.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -314,6 +320,11 @@ extends com.qualcomm.robotcore.eventloop.opmode.OpMode</pre>
 <li class="blockList">
 <h4>addSubsystems</h4>
 <pre>public abstract&nbsp;<a href="../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem">Subsystem</a>[]&nbsp;addSubsystems()</pre>
+<div class="block">Adds the given subsystems (<a href="../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><code>Subsystem</code></a>) to the <a href="../../../com/ftc11392/sequoia/task/Scheduler.html" title="class in com.ftc11392.sequoia.task"><code>Scheduler</code></a>.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the subsystems to add to the Scheduler</dd>
+</dl>
 </li>
 </ul>
 <a name="initTriggers--">
@@ -323,6 +334,7 @@ extends com.qualcomm.robotcore.eventloop.opmode.OpMode</pre>
 <li class="blockList">
 <h4>initTriggers</h4>
 <pre>public abstract&nbsp;void&nbsp;initTriggers()</pre>
+<div class="block">Place triggers that should run during the initialization loop here.</div>
 </li>
 </ul>
 <a name="runTriggers--">
@@ -332,6 +344,7 @@ extends com.qualcomm.robotcore.eventloop.opmode.OpMode</pre>
 <li class="blockList">
 <h4>runTriggers</h4>
 <pre>public abstract&nbsp;void&nbsp;runTriggers()</pre>
+<div class="block">Place triggers that should run during the run loop here.</div>
 </li>
 </ul>
 </li>

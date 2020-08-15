@@ -114,6 +114,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public abstract class <span class="typeNameLabel">PIDFSubsystem</span>
 extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem">Subsystem</a></pre>
+<div class="block">A <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><code>Subsystem</code></a> that uses a <a href="../../../../com/ftc11392/sequoia/util/PIDFController.html" title="class in com.ftc11392.sequoia.util"><code>PIDFController</code></a> to control itself.</div>
 </li>
 </ul>
 </div>
@@ -155,11 +156,15 @@ extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" titl
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#PIDFSubsystem-com.ftc11392.sequoia.util.PIDFController-">PIDFSubsystem</a></span>(<a href="../../../../com/ftc11392/sequoia/util/PIDFController.html" title="class in com.ftc11392.sequoia.util">PIDFController</a>&nbsp;controller)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#PIDFSubsystem-com.ftc11392.sequoia.util.PIDFController-">PIDFSubsystem</a></span>(<a href="../../../../com/ftc11392/sequoia/util/PIDFController.html" title="class in com.ftc11392.sequoia.util">PIDFController</a>&nbsp;controller)</code>
+<div class="block">Instantiates a PIDFSubsystem with an initial setpoint of 0.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#PIDFSubsystem-com.ftc11392.sequoia.util.PIDFController-double-">PIDFSubsystem</a></span>(<a href="../../../../com/ftc11392/sequoia/util/PIDFController.html" title="class in com.ftc11392.sequoia.util">PIDFController</a>&nbsp;controller,
-             double&nbsp;setpoint)</code>&nbsp;</td>
+             double&nbsp;setpoint)</code>
+<div class="block">Instantiates a PIDFSubsystem.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -178,19 +183,27 @@ extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" titl
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#disable--">disable</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#disable--">disable</a></span>()</code>
+<div class="block">Disables PIDF control for the Subsystem.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#enable--">enable</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#enable--">enable</a></span>()</code>
+<div class="block">Enables PIDF control for the Subsystem.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>protected abstract double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#getFeedback--">getFeedback</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#getFeedback--">getFeedback</a></span>()</code>
+<div class="block">Returns the Subsystem feedback.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#initPeriodic--">initPeriodic</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#initPeriodic--">initPeriodic</a></span>()</code>
+<div class="block">Runs periodically in the <code>OpMode</code> init loop.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -198,11 +211,15 @@ extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" titl
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#runPeriodic--">runPeriodic</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#runPeriodic--">runPeriodic</a></span>()</code>
+<div class="block">Runs periodically in the <code>OpMode</code> run loop.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>protected abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#useOutput-double-">useOutput</a></span>(double&nbsp;output)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/subsystem/PIDFSubsystem.html#useOutput-double-">useOutput</a></span>(double&nbsp;output)</code>
+<div class="block">Uses the controller output in the Subsystem.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -267,6 +284,12 @@ extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" titl
 <h4>PIDFSubsystem</h4>
 <pre>public&nbsp;PIDFSubsystem(<a href="../../../../com/ftc11392/sequoia/util/PIDFController.html" title="class in com.ftc11392.sequoia.util">PIDFController</a>&nbsp;controller,
                      double&nbsp;setpoint)</pre>
+<div class="block">Instantiates a PIDFSubsystem.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>controller</code> - the PIDFController to use</dd>
+<dd><code>setpoint</code> - the initial setpoint</dd>
+</dl>
 </li>
 </ul>
 <a name="PIDFSubsystem-com.ftc11392.sequoia.util.PIDFController-">
@@ -276,6 +299,11 @@ extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" titl
 <li class="blockList">
 <h4>PIDFSubsystem</h4>
 <pre>public&nbsp;PIDFSubsystem(<a href="../../../../com/ftc11392/sequoia/util/PIDFController.html" title="class in com.ftc11392.sequoia.util">PIDFController</a>&nbsp;controller)</pre>
+<div class="block">Instantiates a PIDFSubsystem with an initial setpoint of 0.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>controller</code> - the PIDFController to use</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -293,6 +321,8 @@ extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" titl
 <li class="blockList">
 <h4>runPeriodic</h4>
 <pre>public&nbsp;void&nbsp;runPeriodic()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html#runPeriodic--">Subsystem</a></code></span></div>
+<div class="block">Runs periodically in the <code>OpMode</code> run loop.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html#runPeriodic--">runPeriodic</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem">Subsystem</a></code></dd>
@@ -306,6 +336,8 @@ extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" titl
 <li class="blockList">
 <h4>initPeriodic</h4>
 <pre>public&nbsp;void&nbsp;initPeriodic()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html#initPeriodic--">Subsystem</a></code></span></div>
+<div class="block">Runs periodically in the <code>OpMode</code> init loop.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html#initPeriodic--">initPeriodic</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem">Subsystem</a></code></dd>
@@ -319,6 +351,11 @@ extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" titl
 <li class="blockList">
 <h4>useOutput</h4>
 <pre>protected abstract&nbsp;void&nbsp;useOutput(double&nbsp;output)</pre>
+<div class="block">Uses the controller output in the Subsystem.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>output</code> - the controller output.</dd>
+</dl>
 </li>
 </ul>
 <a name="getFeedback--">
@@ -328,6 +365,11 @@ extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" titl
 <li class="blockList">
 <h4>getFeedback</h4>
 <pre>protected abstract&nbsp;double&nbsp;getFeedback()</pre>
+<div class="block">Returns the Subsystem feedback.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the feedback to return</dd>
+</dl>
 </li>
 </ul>
 <a name="enable--">
@@ -337,6 +379,7 @@ extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" titl
 <li class="blockList">
 <h4>enable</h4>
 <pre>public&nbsp;void&nbsp;enable()</pre>
+<div class="block">Enables PIDF control for the Subsystem.</div>
 </li>
 </ul>
 <a name="disable--">
@@ -346,6 +389,7 @@ extends <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" titl
 <li class="blockList">
 <h4>disable</h4>
 <pre>public&nbsp;void&nbsp;disable()</pre>
+<div class="block">Disables PIDF control for the Subsystem.</div>
 </li>
 </ul>
 <a name="isEnabled--">

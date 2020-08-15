@@ -119,6 +119,8 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">ParallelTaskBundle</span>
 extends <a href="../../../../com/ftc11392/sequoia/task/TaskBundle.html" title="class in com.ftc11392.sequoia.task">TaskBundle</a></pre>
+<div class="block">A <a href="../../../../com/ftc11392/sequoia/task/TaskBundle.html" title="class in com.ftc11392.sequoia.task"><code>TaskBundle</code></a> that runs tasks (<a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task"><code>Task</code></a>) in parallel. Stops running when all tasks have stopped
+ running.</div>
 </li>
 </ul>
 </div>
@@ -176,7 +178,9 @@ extends <a href="../../../../com/ftc11392/sequoia/task/TaskBundle.html" title="c
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/ParallelTaskBundle.html#init--">init</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/ParallelTaskBundle.html#init--">init</a></span>()</code>
+<div class="block">Performs the actions that a Task needs on initialization.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -184,11 +188,15 @@ extends <a href="../../../../com/ftc11392/sequoia/task/TaskBundle.html" title="c
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/ParallelTaskBundle.html#loop--">loop</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/ParallelTaskBundle.html#loop--">loop</a></span>()</code>
+<div class="block">Performs the actions that a Task needs to run periodically while its running.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/ParallelTaskBundle.html#stop-boolean-">stop</a></span>(boolean&nbsp;interrupted)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/ParallelTaskBundle.html#stop-boolean-">stop</a></span>(boolean&nbsp;interrupted)</code>
+<div class="block">Performs the actions that a Task needs when stopping, usually cleanup actions.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -264,6 +272,8 @@ extends <a href="../../../../com/ftc11392/sequoia/task/TaskBundle.html" title="c
 <li class="blockList">
 <h4>init</h4>
 <pre>public&nbsp;void&nbsp;init()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../com/ftc11392/sequoia/task/Task.html#init--">Task</a></code></span></div>
+<div class="block">Performs the actions that a Task needs on initialization.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/ftc11392/sequoia/task/Task.html#init--">init</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a></code></dd>
@@ -277,6 +287,8 @@ extends <a href="../../../../com/ftc11392/sequoia/task/TaskBundle.html" title="c
 <li class="blockList">
 <h4>loop</h4>
 <pre>public&nbsp;void&nbsp;loop()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../com/ftc11392/sequoia/task/Task.html#loop--">Task</a></code></span></div>
+<div class="block">Performs the actions that a Task needs to run periodically while its running.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/ftc11392/sequoia/task/Task.html#loop--">loop</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a></code></dd>
@@ -290,9 +302,13 @@ extends <a href="../../../../com/ftc11392/sequoia/task/TaskBundle.html" title="c
 <li class="blockList">
 <h4>stop</h4>
 <pre>public&nbsp;void&nbsp;stop(boolean&nbsp;interrupted)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../com/ftc11392/sequoia/task/Task.html#stop-boolean-">Task</a></code></span></div>
+<div class="block">Performs the actions that a Task needs when stopping, usually cleanup actions.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/ftc11392/sequoia/task/Task.html#stop-boolean-">stop</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>interrupted</code> - whether the Task has been interrupted or not</dd>
 </dl>
 </li>
 </ul>

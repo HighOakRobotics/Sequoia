@@ -150,11 +150,15 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#cancel-com.ftc11392.sequoia.task.Task-">cancel</a></span>(<a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a>&nbsp;task)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#cancel-com.ftc11392.sequoia.task.Task-">cancel</a></span>(<a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a>&nbsp;task)</code>
+<div class="block">Cancels the given <a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task"><code>Task</code></a>.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#cancelAll--">cancelAll</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#cancelAll--">cancelAll</a></span>()</code>
+<div class="block">Cancels all tasks (<a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task"><code>Task</code></a>)</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -162,7 +166,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#clearSubsystems--">clearSubsystems</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#clearSubsystems--">clearSubsystems</a></span>()</code>
+<div class="block">Clears all subsystems (<a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><code>Subsystem</code></a>).</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../com/ftc11392/sequoia/task/Scheduler.html" title="class in com.ftc11392.sequoia.task">Scheduler</a></code></td>
@@ -170,7 +176,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#init-org.firstinspires.ftc.robotcore.external.Telemetry-">init</a></span>(org.firstinspires.ftc.robotcore.external.Telemetry&nbsp;telemetry)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#init-org.firstinspires.ftc.robotcore.external.Telemetry-">init</a></span>(org.firstinspires.ftc.robotcore.external.Telemetry&nbsp;telemetry)</code>
+<div class="block">Provides the Scheduler with its requirements.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -178,15 +186,21 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#loop-com.ftc11392.sequoia.util.OpModeState-">loop</a></span>(<a href="../../../../com/ftc11392/sequoia/util/OpModeState.html" title="enum in com.ftc11392.sequoia.util">OpModeState</a>&nbsp;state)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#loop-com.ftc11392.sequoia.util.OpModeState-">loop</a></span>(<a href="../../../../com/ftc11392/sequoia/util/OpModeState.html" title="enum in com.ftc11392.sequoia.util">OpModeState</a>&nbsp;state)</code>
+<div class="block">Run this method regularly.</div>
+</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#registerSubsystem-com.ftc11392.sequoia.subsystem.Subsystem...-">registerSubsystem</a></span>(<a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem">Subsystem</a>...&nbsp;subsystems)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#registerSubsystem-com.ftc11392.sequoia.subsystem.Subsystem...-">registerSubsystem</a></span>(<a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem">Subsystem</a>...&nbsp;subsystems)</code>
+<div class="block">Adds the given subsystems (<a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><code>Subsystem</code></a>) to the Scheduler.</div>
+</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#schedule-com.ftc11392.sequoia.task.Task-">schedule</a></span>(<a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a>&nbsp;task)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/ftc11392/sequoia/task/Scheduler.html#schedule-com.ftc11392.sequoia.task.Task-">schedule</a></span>(<a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a>&nbsp;task)</code>
+<div class="block">Schedules the given <a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task"><code>Task</code></a>.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -234,6 +248,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>init</h4>
 <pre>public&nbsp;void&nbsp;init(org.firstinspires.ftc.robotcore.external.Telemetry&nbsp;telemetry)</pre>
+<div class="block">Provides the Scheduler with its requirements.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>telemetry</code> - a Telemetry object from <code>OpMode</code> that allows
+                  the scheduler to send messages to the Driver Station</dd>
+</dl>
 </li>
 </ul>
 <a name="getInstance--">
@@ -252,6 +272,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>registerSubsystem</h4>
 <pre>public&nbsp;void&nbsp;registerSubsystem(<a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem">Subsystem</a>...&nbsp;subsystems)</pre>
+<div class="block">Adds the given subsystems (<a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><code>Subsystem</code></a>) to the Scheduler.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>subsystems</code> - the subsystems to add</dd>
+</dl>
 </li>
 </ul>
 <a name="clearSubsystems--">
@@ -261,6 +286,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>clearSubsystems</h4>
 <pre>public&nbsp;void&nbsp;clearSubsystems()</pre>
+<div class="block">Clears all subsystems (<a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><code>Subsystem</code></a>).</div>
 </li>
 </ul>
 <a name="schedule-com.ftc11392.sequoia.task.Task-">
@@ -270,6 +296,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>schedule</h4>
 <pre>public&nbsp;void&nbsp;schedule(<a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a>&nbsp;task)</pre>
+<div class="block">Schedules the given <a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task"><code>Task</code></a>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>task</code> - the Task to schedule</dd>
+</dl>
 </li>
 </ul>
 <a name="cancel-com.ftc11392.sequoia.task.Task-">
@@ -279,6 +310,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>cancel</h4>
 <pre>public&nbsp;void&nbsp;cancel(<a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task">Task</a>&nbsp;task)</pre>
+<div class="block">Cancels the given <a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task"><code>Task</code></a>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>task</code> - the Task to cancel</dd>
+</dl>
 </li>
 </ul>
 <a name="cancelAll--">
@@ -288,6 +324,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>cancelAll</h4>
 <pre>public&nbsp;void&nbsp;cancelAll()</pre>
+<div class="block">Cancels all tasks (<a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task"><code>Task</code></a>)</div>
 </li>
 </ul>
 <a name="isScheduled-com.ftc11392.sequoia.task.Task...-">
@@ -324,6 +361,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>loop</h4>
 <pre>public&nbsp;void&nbsp;loop(<a href="../../../../com/ftc11392/sequoia/util/OpModeState.html" title="enum in com.ftc11392.sequoia.util">OpModeState</a>&nbsp;state)</pre>
+<div class="block">Run this method regularly. Runs <a href="../../../../com/ftc11392/sequoia/subsystem/Subsystem.html" title="class in com.ftc11392.sequoia.subsystem"><code>Subsystem</code></a> periodics,
+ polls behaviors, and schedules tasks (<a href="../../../../com/ftc11392/sequoia/task/Task.html" title="class in com.ftc11392.sequoia.task"><code>Task</code></a>).</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>state</code> - the state of the <code>OpMode</code> right now</dd>
+</dl>
 </li>
 </ul>
 </li>
