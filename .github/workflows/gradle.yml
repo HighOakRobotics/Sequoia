@@ -4,8 +4,7 @@
 name: Gradle CI
 
 on:
-  push:
-    [ master, dev ]
+  push: [ master ]
   pull_request:
 
 jobs:
