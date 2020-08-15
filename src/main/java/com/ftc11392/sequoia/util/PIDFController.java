@@ -1,23 +1,30 @@
 package com.ftc11392.sequoia.util;
 
+import java.util.function.BiFunction;
+import java.util.function.DoubleFunction;
+
 public class PIDFController {
 
     Clock clock;
+    BiFunction<Double, Double, Double> feedforward;
     double kP, kI, kD, kF, bias;
     double lastIntegral;
     long lastTime = 0;
     double lastError = 0.0;
 
-    public PIDFController(double kP, double kI, double kD, double kF, double bias) {
+    public PIDFController(double kP, double kI, double kD,
+                          double kF, BiFunction<Double, Double, Double> feedforward, double bias) {
         this.kP = kP;
         this.kI = kI;
         this.kD = kD;
         this.kF = kF;
+        this.feedforward = feedforward;
         this.bias = bias;
     }
 
+
     public PIDFController(double kP, double kI, double kD, double kF) {
-        this(kP,kI,kD,kF,0.0);
+        this(kP,kI,kD,kF,(time, setpoint)-> setpoint/(time*2),0.0);
     }
 
     public PIDFController(double kP, double kI, double kD) {
@@ -39,7 +46,7 @@ public class PIDFController {
         double error = setpoint - feedback;
         double integral = lastIntegral + error * timeInterval;
         double derivative = (error - lastError) / timeInterval;
-        double feedforward = (1/timeSec) * setpoint;
+        double feedforward = this.feedforward.apply(timeSec, setpoint);
 
         double output = kP*error + kI*integral + kD*derivative + kF*feedforward + bias;
 
