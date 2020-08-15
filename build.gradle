@@ -11,7 +11,7 @@ java {
 }
 
 javadoc {
-	destinationDir = new File("./docs/javadoc")
+	destinationDir = new File(rootProject.projectDir, "docs/javadoc/.")
 }
 
 repositories {
