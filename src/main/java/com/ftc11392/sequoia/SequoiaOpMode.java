@@ -13,7 +13,7 @@ public abstract class SequoiaOpMode extends OpMode {
 	public void init() {
 		resetScheduler();
 		Scheduler.getInstance().init(telemetry);
-		Scheduler.getInstance().registerSubsystem(addSubsystems().toArray(new Subsystem[0]));
+		Scheduler.getInstance().registerSubsystem(addSubsystems());
 		initTriggers();
 	}
 
@@ -45,7 +45,7 @@ public abstract class SequoiaOpMode extends OpMode {
 		Scheduler.getInstance().clearSubsystems();
 	}
 
-	public abstract List<Subsystem> addSubsystems();
+	public abstract Subsystem[] addSubsystems();
 	public abstract void initTriggers();
 	public abstract void runTriggers();
 }
