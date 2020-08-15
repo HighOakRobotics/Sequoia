@@ -42,7 +42,7 @@ public class PIDFController {
 
     /**
      * Instantiates a PIDFController, using the default feed-forward function
-     * of <code>(time, setpoint) -> setpoint/(time*2)</code>.
+     * of <code>(time, setpoint) to setpoint/(time*2)</code>.
      *
      * @param kP the proportional term
      * @param kI the integral term

@@ -7,6 +7,11 @@ plugins {
 java {
 	sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 	withSourcesJar()
+	withJavadocJar()
+}
+
+javadoc {
+	destinationDir = new File("./docs/javadoc")
 }
 
 repositories {
