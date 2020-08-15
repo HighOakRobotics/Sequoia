@@ -12,14 +12,24 @@ public class Task {
 	protected HashSet<Subsystem> subsystems = new HashSet<>();
 	private Telemetry telemetry;
 
-	private boolean interruptible = true;
-
+	protected boolean interruptible = true;
 	protected boolean running;
 
+	/**
+	 * Instantiates a Task.
+	 *
+	 * @param telemetry {@link Telemetry} from an {@link com.qualcomm.robotcore.eventloop.opmode.OpMode}
+	 *                                   for the task to be able to send information to a Driver Station.
+	 */
 	public Task(Telemetry telemetry) {
 		this.telemetry = telemetry;
 	}
 
+	/**
+	 * Adds {@link Subsystem} to the Task as dependencies for it to be scheduled.
+	 *
+	 * @param subsystems the Subsystems to add.
+	 */
 	public final void addSubsystems(Subsystem... subsystems) {
 		this.subsystems.addAll(Arrays.asList(subsystems));
 	}

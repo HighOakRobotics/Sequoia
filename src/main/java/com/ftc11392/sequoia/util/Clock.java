@@ -5,6 +5,9 @@ import java.util.concurrent.TimeUnit;
 public class Clock {
 	private long startTime;
 
+	/**
+	 * Starts the clock.
+	 */
 	public void startTiming() {
 		startTime = System.nanoTime();
 	}
