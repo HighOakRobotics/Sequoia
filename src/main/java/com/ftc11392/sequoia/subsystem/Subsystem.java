@@ -10,9 +10,9 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  * An abstraction above hardware devices.
  */
 public abstract class Subsystem {
-	Telemetry telemetry;
+	protected Telemetry telemetry;
 
-	Task defaultTask = new DefaultTask();
+	protected Task defaultTask = new DefaultTask();
 
 	/**
 	 * Instantiates a Subsystem

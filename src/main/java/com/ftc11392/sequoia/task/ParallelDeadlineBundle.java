@@ -68,7 +68,7 @@ public class ParallelDeadlineBundle extends TaskBundle {
 			task.loop();
 			if(!task.isRunning()) {
 				task.stop(false);
-				if(task == deadline) {
+				if(task.equals(deadline)) {
 					running = false;
 				}
 			}
