@@ -2,6 +2,7 @@ package com.ftc11392.sequoia.triggers;
 
 import com.ftc11392.sequoia.task.Scheduler;
 import com.ftc11392.sequoia.task.Task;
+import com.ftc11392.sequoia.task.TaskException;
 
 import java.util.function.BooleanSupplier;
 
@@ -123,6 +124,8 @@ public class Trigger {
 						case SCHEDULE:
 							scheduler.schedule(task);
 							break;
+						default:
+							throw new TaskException("Provide valid enum (WhileBehavior) for on.");
 					}
 				} else if (!active && !lastActive) {
 					// While off
@@ -132,6 +135,8 @@ public class Trigger {
 						case SCHEDULE:
 							scheduler.schedule(task);
 							break;
+						default:
+							throw new TaskException("Provide valid enum (WhileBehavior) for off.");
 					}
 				} else if (active) {
 					// Rising edge
@@ -144,6 +149,8 @@ public class Trigger {
 						case CANCEL:
 							scheduler.cancel(task);
 							break;
+						default:
+							throw new TaskException("Provide valid enum (EdgeBehavior) for rising.");
 					}
 				} else {
 					// Falling edge
@@ -156,6 +163,8 @@ public class Trigger {
 						case CANCEL:
 							scheduler.cancel(task);
 							break;
+						default:
+							throw new TaskException("Provide valid enum (EdgeBehavior) for falling.");
 					}
 				}
 

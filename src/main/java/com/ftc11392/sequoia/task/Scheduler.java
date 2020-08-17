@@ -10,6 +10,14 @@ public final class Scheduler {
 	private static final Scheduler instance = new Scheduler();
 	private Telemetry telemetry;
 
+	private final List<Task> toSchedule = new ArrayList<>();
+	private final List<Task> toCancel = new ArrayList<>();
+	private final List<Subsystem> subsystems = new ArrayList<>();
+	private final List<Task> scheduledTasks = new ArrayList<>();
+	private final List<Runnable> behaviors = new ArrayList<>();
+
+	private final Map<Subsystem, Task> bindings = new HashMap<>();
+	private boolean inLoop;
 	/**
 	 * Provides the Scheduler with its requirements.
 	 *
@@ -124,25 +132,8 @@ public final class Scheduler {
 		behaviors.clear();
 	}
 
-	private final List<Task> toSchedule = new ArrayList<>();
-	private final List<Task> toCancel = new ArrayList<>();
-	private final List<Subsystem> subsystems = new ArrayList<>();
-	private final List<Task> scheduledTasks = new ArrayList<>();
-	private final List<Runnable> behaviors = new ArrayList<>();
 
-	private final Map<Subsystem, Task> bindings = new HashMap<>();
-	private boolean inLoop;
-
-	/**
-	 * Run this method regularly. Runs {@link Subsystem} periodics,
-	 * polls behaviors, and schedules tasks ({@link Task}).
-	 *
-	 * @param state the state of the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} right now
-	 */
-	public void loop(OpModeState state) {
-		// Run this in a loop
-
-		// Run loop methods of all subsystems (initloop or loop depending on robot state)
+	private void runPeriodics(OpModeState state) {
 		switch (state) {
 			case INIT_LOOP:
 				for (Subsystem subsystem : subsystems)
@@ -154,16 +145,11 @@ public final class Scheduler {
 				break;
 			default:
 				// Should there be a SchedulerException?
-				throw new RuntimeException("The Scheduler should not be running in this state.");
+				throw new TaskException("The Scheduler should not be running in this state.");
 		}
+	}
 
-		// Check for any triggers (poll buttons) and add any corresponding commands
-		// (do nothing if it's trying to use already-used subsystems that can't be interrupted)
-
-		for (Runnable behavior : behaviors) {
-			behavior.run();
-		}
-
+	private void runTasks() {
 		// NOW ENTERING RUN LOOP - set run loop boolean to true
 		// Pipe any new scheduled tasks to a separate queue while the run loop boolean is true.
 		inLoop = true;
@@ -181,6 +167,26 @@ public final class Scheduler {
 
 		// NOW EXITING RUN LOOP - set run loop boolean to false
 		inLoop = false;
+	}
+
+	/**
+	 * Run this method regularly. Runs {@link Subsystem} periodics,
+	 * polls behaviors, and schedules tasks ({@link Task}).
+	 *
+	 * @param state the state of the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} right now
+	 */
+	public void loop(OpModeState state) {
+		// Run this in a loop
+
+		// Run loop methods of all subsystems (initloop or loop depending on robot state)
+		runPeriodics(state);
+		// Check for any triggers (poll buttons) and add any corresponding commands
+		// (do nothing if it's trying to use already-used subsystems that can't be interrupted)
+		for (Runnable behavior : behaviors) {
+			behavior.run();
+		}
+
+		runTasks();
 
 		// Resolve any commands that had to be queued because of iteration here (schedule them)
 		// Empty any to schedule / to cancel queues
