@@ -1,6 +1,6 @@
 # This workflow will deploy a JAR artifact along with the regular build.
 
-name: Gradle CI w/ Release
+name: Release to Bintray
 
 on:
   create:
