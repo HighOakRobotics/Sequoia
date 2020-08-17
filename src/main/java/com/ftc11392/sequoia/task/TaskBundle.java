@@ -23,7 +23,7 @@ public abstract class TaskBundle extends Task {
 	 *
 	 * @param tasks the tasks to add
 	 */
-	static void registerBundledTasks(Task... tasks) {
+	public static void registerBundledTasks(Task... tasks) {
 		bundledTasks.addAll(Arrays.asList(tasks));
 	}
 

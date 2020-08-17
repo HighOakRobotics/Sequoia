@@ -1,6 +1,5 @@
 package com.ftc11392.sequoia;
 
-import com.ftc11392.sequoia.subsystem.Subsystem;
 import com.ftc11392.sequoia.task.Scheduler;
 import com.ftc11392.sequoia.util.OpModeState;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -11,6 +10,7 @@ public abstract class SequoiaOpMode extends OpMode {
 	public void init() {
 		resetScheduler();
 		Scheduler.getInstance().init(telemetry);
+		Scheduler.getInstance().initSubsystems();
 		initTriggers();
 	}
 

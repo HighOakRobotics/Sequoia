@@ -3,6 +3,10 @@ package com.ftc11392.sequoia.triggers;
 import java.util.function.BooleanSupplier;
 
 public class ToggleTrigger extends Trigger {
+	private boolean lastPoll = false;
+	private boolean currentState = false;
+	private boolean rising;
+
 	/**
 	 * Creates a toggling trigger.
 	 *
@@ -17,10 +21,6 @@ public class ToggleTrigger extends Trigger {
 	public ToggleTrigger(BooleanSupplier isActive) {
 		this(isActive, true);
 	}
-
-	private boolean lastPoll = false;
-	private boolean currentState = false;
-	private boolean rising;
 
 	/**
 	 * Converts signals from button presses to status toggles (toggles the status upon a rising/falling edge) that are then processed by Trigger.

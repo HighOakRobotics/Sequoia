@@ -15,7 +15,8 @@ import java.util.function.DoubleSupplier;
 public class PIDFTask extends Task {
 
     protected final PIDFController controller;
-    protected DoubleSupplier feedback, setpoint;
+    protected DoubleSupplier feedback;
+    protected DoubleSupplier setpoint;
     protected DoubleConsumer output;
 
     public PIDFTask(Telemetry telemetry, PIDFController controller,

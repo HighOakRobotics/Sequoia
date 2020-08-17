@@ -1,6 +1,7 @@
 package com.ftc11392.sequoia.task;
 
 import com.ftc11392.sequoia.subsystem.Subsystem;
+import com.ftc11392.sequoia.util.Clock;
 import com.ftc11392.sequoia.util.OpModeState;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -9,7 +10,16 @@ import java.util.*;
 public final class Scheduler {
 	private static final Scheduler instance = new Scheduler();
 	private Telemetry telemetry;
+	private Clock clock = new Clock();
 
+	private final List<Task> toSchedule = new ArrayList<>();
+	private final List<Task> toCancel = new ArrayList<>();
+	private final List<Subsystem> subsystems = new ArrayList<>();
+	private final List<Task> scheduledTasks = new ArrayList<>();
+	private final List<Runnable> behaviors = new ArrayList<>();
+
+	private final Map<Subsystem, Task> bindings = new HashMap<>();
+	private boolean inLoop;
 	/**
 	 * Provides the Scheduler with its requirements.
 	 *
@@ -20,6 +30,15 @@ public final class Scheduler {
 		this.telemetry = telemetry;
 	}
 
+	/**
+	 * Initializes all subsystem hardware.
+	 */
+	public void initSubsystems() {
+		for (Subsystem subsystem : subsystems) {
+			subsystem.initialize();
+		}
+		telemetry.log().add("Initialized " + subsystems.size() + " subsystems.");
+	}
 
 	public static Scheduler getInstance() {
 		return instance;
@@ -116,25 +135,8 @@ public final class Scheduler {
 		behaviors.clear();
 	}
 
-	private final List<Task> toSchedule = new ArrayList<>();
-	private final List<Task> toCancel = new ArrayList<>();
-	private final List<Subsystem> subsystems = new ArrayList<>();
-	private final List<Task> scheduledTasks = new ArrayList<>();
-	private final List<Runnable> behaviors = new ArrayList<>();
 
-	private final Map<Subsystem, Task> bindings = new HashMap<>();
-	private boolean inLoop;
-
-	/**
-	 * Run this method regularly. Runs {@link Subsystem} periodics,
-	 * polls behaviors, and schedules tasks ({@link Task}).
-	 *
-	 * @param state the state of the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} right now
-	 */
-	public void loop(OpModeState state) {
-		// Run this in a loop
-
-		// Run loop methods of all subsystems (initloop or loop depending on robot state)
+	private void runPeriodics(OpModeState state) {
 		switch (state) {
 			case INIT_LOOP:
 				for (Subsystem subsystem : subsystems)
@@ -146,16 +148,11 @@ public final class Scheduler {
 				break;
 			default:
 				// Should there be a SchedulerException?
-				throw new RuntimeException("The Scheduler should not be running in this state.");
+				throw new TaskException("The Scheduler should not be running in this state.");
 		}
+	}
 
-		// Check for any triggers (poll buttons) and add any corresponding commands
-		// (do nothing if it's trying to use already-used subsystems that can't be interrupted)
-
-		for (Runnable behavior : behaviors) {
-			behavior.run();
-		}
-
+	private void runTasks() {
 		// NOW ENTERING RUN LOOP - set run loop boolean to true
 		// Pipe any new scheduled tasks to a separate queue while the run loop boolean is true.
 		inLoop = true;
@@ -173,6 +170,26 @@ public final class Scheduler {
 
 		// NOW EXITING RUN LOOP - set run loop boolean to false
 		inLoop = false;
+	}
+
+	/**
+	 * Run this method regularly. Runs {@link Subsystem} periodics,
+	 * polls behaviors, and schedules tasks ({@link Task}).
+	 *
+	 * @param state the state of the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} right now
+	 */
+	public void loop(OpModeState state) {
+		// Run this in a loop
+		clock.startTiming();
+		// Run loop methods of all subsystems (initloop or loop depending on robot state)
+		runPeriodics(state);
+		// Check for any triggers (poll buttons) and add any corresponding commands
+		// (do nothing if it's trying to use already-used subsystems that can't be interrupted)
+		for (Runnable behavior : behaviors) {
+			behavior.run();
+		}
+
+		runTasks();
 
 		// Resolve any commands that had to be queued because of iteration here (schedule them)
 		// Empty any to schedule / to cancel queues
@@ -189,5 +206,11 @@ public final class Scheduler {
 		for (Subsystem subsystem : subsystems) {
 			schedule(subsystem.getDefaultTask());
 		}
+
+		long durationMs = clock.getMillis();
+		double duration = clock.getSeconds();
+		telemetry.addLine("Scheduler")
+				.addData("Time", durationMs + " ms")
+				.addData("Freq", 1/duration + " Hz");
 	}
 }
