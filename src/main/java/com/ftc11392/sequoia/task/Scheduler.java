@@ -20,6 +20,14 @@ public final class Scheduler {
 		this.telemetry = telemetry;
 	}
 
+	/**
+	 * Initializes all subsystem hardware.
+	 */
+	public void initSubsystems() {
+		for (Subsystem subsystem : subsystems) {
+			subsystem.initialize();
+		}
+	}
 
 	public static Scheduler getInstance() {
 		return instance;

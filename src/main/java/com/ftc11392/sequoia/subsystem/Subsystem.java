@@ -38,6 +38,12 @@ public abstract class Subsystem {
 	}
 
 	/**
+	 * Initialize hardware devices here (run during {@link com.qualcomm.robotcore.eventloop.opmode.OpMode}
+	 * <code>init()</code>).
+	 */
+	public abstract void initialize();
+
+	/**
 	 * Runs periodically in the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} run loop.
 	 */
 	public abstract void runPeriodic();
