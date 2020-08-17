@@ -37,6 +37,7 @@ public final class Scheduler {
 		for (Subsystem subsystem : subsystems) {
 			subsystem.initialize();
 		}
+		telemetry.log().add("Initialized " + subsystems.size() + " subsystems.");
 	}
 
 	public static Scheduler getInstance() {
