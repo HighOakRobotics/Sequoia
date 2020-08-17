@@ -44,29 +44,6 @@ public abstract class Subsystem {
 	public abstract void initialize();
 
 	/**
-	 * Instantiates a Subsystem
-	 *
-	 * @param telemetry {@link Telemetry} from an {@link com.qualcomm.robotcore.eventloop.opmode.OpMode}
-	 *                                   for the task to be able to send information to a Driver Station.
-	 * @param defaultTask the default Task of the Subsystem
-	 */
-	public Subsystem(Telemetry telemetry, Task defaultTask) {
-		this.telemetry = telemetry;
-		this.defaultTask = defaultTask;
-		Scheduler.getInstance().registerSubsystem(this);
-	}
-
-	/**
-	 * Instantiates a Subsystem with a DefaultTask
-	 *
-	 * @param telemetry {@link Telemetry} from an {@link com.qualcomm.robotcore.eventloop.opmode.OpMode}
-	 *                                   for the task to be able to send information to a Driver Station.
-	 */
-	public Subsystem(Telemetry telemetry) {
-		this(telemetry, new DefaultTask());
-	}
-
-	/**
 	 * Runs periodically in the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} run loop.
 	 */
 	public abstract void runPeriodic();
