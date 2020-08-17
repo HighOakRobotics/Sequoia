@@ -1,6 +1,7 @@
 package com.ftc11392.sequoia.task;
 
 import com.ftc11392.sequoia.subsystem.Subsystem;
+import com.ftc11392.sequoia.util.Clock;
 import com.ftc11392.sequoia.util.OpModeState;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -9,6 +10,7 @@ import java.util.*;
 public final class Scheduler {
 	private static final Scheduler instance = new Scheduler();
 	private Telemetry telemetry;
+	private Clock clock = new Clock();
 
 	private final List<Task> toSchedule = new ArrayList<>();
 	private final List<Task> toCancel = new ArrayList<>();
@@ -177,7 +179,7 @@ public final class Scheduler {
 	 */
 	public void loop(OpModeState state) {
 		// Run this in a loop
-
+		clock.startTiming();
 		// Run loop methods of all subsystems (initloop or loop depending on robot state)
 		runPeriodics(state);
 		// Check for any triggers (poll buttons) and add any corresponding commands
@@ -203,5 +205,11 @@ public final class Scheduler {
 		for (Subsystem subsystem : subsystems) {
 			schedule(subsystem.getDefaultTask());
 		}
+
+		long durationMs = clock.getMillis();
+		double duration = clock.getSeconds();
+		telemetry.addLine("Scheduler")
+				.addData("Time", durationMs + " ms")
+				.addData("Freq", 1/duration + " Hz");
 	}
 }
