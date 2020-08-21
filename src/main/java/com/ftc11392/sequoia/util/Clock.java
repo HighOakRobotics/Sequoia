@@ -28,7 +28,8 @@ public class Clock {
 	 * @return The time since the clock started in the given TimeUnit.
 	 */
 	public long getTime(TimeUnit time) {
-		return time.convert(startTime, TimeUnit.NANOSECONDS);
+		return time.convert(System.nanoTime() - startTime,
+				TimeUnit.NANOSECONDS);
 	}
 
 	/**
