@@ -1,10 +1,14 @@
 package com.ftc11392.sequoia;
 
 import com.ftc11392.sequoia.task.Scheduler;
+import com.ftc11392.sequoia.util.GamepadHandler;
 import com.ftc11392.sequoia.util.OpModeState;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 public abstract class SequoiaOpMode extends OpMode {
+
+	public GamepadHandler gamepad1H;
+	public GamepadHandler gamepad2H;
 
 	@Override
 	public void init() {
@@ -21,6 +25,8 @@ public abstract class SequoiaOpMode extends OpMode {
 
 	@Override
 	public void start() {
+		gamepad1H = new GamepadHandler(gamepad1);
+		gamepad2H = new GamepadHandler(gamepad2);
 		Scheduler.getInstance().clearBehaviors();
 		runTriggers();
 	}
