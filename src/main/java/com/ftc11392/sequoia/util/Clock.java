@@ -1,7 +1,5 @@
 package com.ftc11392.sequoia.util;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
 import java.util.concurrent.TimeUnit;
 
 public class Clock {
