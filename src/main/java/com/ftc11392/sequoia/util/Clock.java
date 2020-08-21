@@ -46,5 +46,5 @@ public class Clock {
 	 *
 	 * @return The time since the clock started in seconds.
 	 */
-	public double getSeconds() { return getTime(TimeUnit.SECONDS); }
+	public double getSeconds() { return getTime(TimeUnit.MILLISECONDS)/1000.0; }
 }
