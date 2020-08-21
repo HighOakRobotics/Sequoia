@@ -1,5 +1,7 @@
 package com.ftc11392.sequoia.util;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 import java.util.concurrent.TimeUnit;
 
 public class Clock {
@@ -46,5 +48,5 @@ public class Clock {
 	 *
 	 * @return The time since the clock started in seconds.
 	 */
-	public double getSeconds() { return getTime(TimeUnit.SECONDS); }
+	public double getSeconds() { return getTime(TimeUnit.MILLISECONDS)/1000.0; }
 }
