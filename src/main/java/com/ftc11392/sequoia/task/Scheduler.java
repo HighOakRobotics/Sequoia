@@ -3,6 +3,7 @@ package com.ftc11392.sequoia.task;
 import com.ftc11392.sequoia.subsystem.Subsystem;
 import com.ftc11392.sequoia.util.Clock;
 import com.ftc11392.sequoia.util.OpModeState;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.*;
@@ -33,9 +34,9 @@ public final class Scheduler {
 	/**
 	 * Initializes all subsystem hardware.
 	 */
-	public void initSubsystems() {
+	public void initSubsystems(HardwareMap hardwareMap) {
 		for (Subsystem subsystem : subsystems) {
-			subsystem.initialize();
+			subsystem.initialize(hardwareMap);
 		}
 		telemetry.log().add("Initialized " + subsystems.size() + " subsystems.");
 	}

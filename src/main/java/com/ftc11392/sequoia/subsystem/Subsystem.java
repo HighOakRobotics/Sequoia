@@ -4,6 +4,7 @@ import com.ftc11392.sequoia.task.DefaultTask;
 import com.ftc11392.sequoia.task.Scheduler;
 import com.ftc11392.sequoia.task.Task;
 
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 /**
@@ -42,7 +43,7 @@ public abstract class Subsystem {
 	 * Initialize hardware devices here (run during {@link com.qualcomm.robotcore.eventloop.opmode.OpMode}
 	 * <code>init()</code>).
 	 */
-	public abstract void initialize();
+	public abstract void initialize(HardwareMap hardwareMap);
 
 	/**
 	 * Runs periodically in the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} run loop.
