@@ -23,7 +23,6 @@ public abstract class Subsystem {
 	public Subsystem(Task defaultTask) {
 		this.defaultTask = defaultTask;
 		Scheduler.getInstance().registerSubsystem(this);
-		telemetry.log().add("Registered a Subsystem in the Scheduler");
 	}
 
 	/**
