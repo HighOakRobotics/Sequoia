@@ -36,6 +36,7 @@ public final class Scheduler {
 	 */
 	public void initSubsystems(HardwareMap hardwareMap) {
 		for (Subsystem subsystem : subsystems) {
+			subsystem.assignTelemetry(telemetry);
 			subsystem.initialize(hardwareMap);
 		}
 		telemetry.log().add("Initialized " + subsystems.size() + " subsystems.");
