@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A {@link Task} that schedules the given tasks in sequence. These tasks may not have conflicting
+ * A {@link Task} that schedules the given tasks in sequence. These tasks may have conflicting
  * subsystems ({@link com.ftc11392.sequoia.subsystem.Subsystem}).
  */
 public class SequentialTaskBundle extends TaskBundle {

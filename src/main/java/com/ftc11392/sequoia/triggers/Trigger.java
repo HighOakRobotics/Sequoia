@@ -93,7 +93,22 @@ public class Trigger {
 	 * @return This trigger, for chaining method calls.
 	 */
 	public Trigger fallingWithCancel(final Task task) {
-		return useBehavior(task, WhileBehavior.NOTHING, EdgeBehavior.SCHEDULE, WhileBehavior.NOTHING, EdgeBehavior.CANCEL);
+		return useBehavior(task, WhileBehavior.NOTHING, EdgeBehavior.CANCEL, WhileBehavior.NOTHING, EdgeBehavior.SCHEDULE);
+	}
+
+	/**
+	 * Schedules the task as soon as the input changes to on, and continues to attempt to schedule while it is. Cancels when off.
+	 * <p>
+	 * WHILE OFF : Nothing
+	 * OFF to ON : Schedules task
+	 * WHILE ON  : Schedules task
+	 * ON to OFF : Cancels task
+	 *
+	 * @param task The task to run.
+	 * @return This trigger, for chaining method calls.
+	 */
+	public Trigger whileOn(final Task task) {
+		return useBehavior(task, WhileBehavior.NOTHING, EdgeBehavior.SCHEDULE, WhileBehavior.SCHEDULE, EdgeBehavior.CANCEL);
 	}
 
 	/**
