@@ -7,12 +7,14 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 public abstract class SequoiaOpMode extends OpMode {
 
-	public GamepadHandler gamepad1H;
-	public GamepadHandler gamepad2H;
+	protected GamepadHandler gamepad1H;
+	protected GamepadHandler gamepad2H;
+	protected Scheduler scheduler;
 
 	@Override
 	public void init() {
-		Scheduler.getInstance().init(telemetry);
+		scheduler = Scheduler.getInstance();
+		scheduler.init(telemetry);
 		Scheduler.getInstance().initSubsystems(hardwareMap);
 		initTriggers();
 	}
