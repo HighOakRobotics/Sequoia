@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class Task {
 	protected HashSet<Subsystem> subsystems = new HashSet<>();
-	private Telemetry telemetry;
+	protected Telemetry telemetry;
 
 	protected boolean interruptible = true;
 	protected boolean running;
