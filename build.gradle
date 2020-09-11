@@ -10,6 +10,10 @@ java {
 	withJavadocJar()
 }
 
+test {
+	useJUnitPlatform()
+}
+
 javadoc {
 	destinationDir = new File(rootProject.projectDir, "docs/javadoc/.")
 }
@@ -19,6 +23,9 @@ repositories {
 }
 
 dependencies {
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+	testCompile "org.mockito:mockito-core:2.+"
 	implementation files("libs/RobotCore.jar")
     implementation 'org.jetbrains:annotations:20.1.0'
 }
