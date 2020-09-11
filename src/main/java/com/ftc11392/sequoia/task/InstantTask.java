@@ -1,15 +1,12 @@
 package com.ftc11392.sequoia.task;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
 /**
  * A {@link Task} that will only initialize, running the given {@link Runnable}. Stops immediately.
  */
 public class InstantTask extends Task {
 	private final Runnable toRun;
 
-	public InstantTask(Runnable toRun, Telemetry telemetry) {
-		super(telemetry);
+	public InstantTask(Runnable toRun) {
 		this.toRun = toRun;
 		running = false;
 	}

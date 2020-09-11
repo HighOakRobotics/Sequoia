@@ -1,7 +1,6 @@
 package com.ftc11392.sequoia.task;
 
 import com.ftc11392.sequoia.subsystem.Subsystem;
-
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.Arrays;
@@ -14,16 +13,6 @@ public abstract class Task {
 
 	protected boolean interruptible = true;
 	protected boolean running;
-
-	/**
-	 * Instantiates a Task.
-	 *
-	 * @param telemetry {@link Telemetry} from an {@link com.qualcomm.robotcore.eventloop.opmode.OpMode}
-	 *                                   for the task to be able to send information to a Driver Station.
-	 */
-	public Task(Telemetry telemetry) {
-		this.telemetry = telemetry;
-	}
 
 	/**
 	 * Adds {@link Subsystem} to the Task as dependencies for it to be scheduled.
@@ -55,6 +44,16 @@ public abstract class Task {
 	 */
 	public abstract void stop(boolean interrupted);
 
+	/**
+	 * Sets the telemetry instance
+	 *
+	 * @param telemetry {@link Telemetry} from an {@link com.qualcomm.robotcore.eventloop.opmode.OpMode}
+	 *                  for the task to be able to send information to a Driver Station.
+	 */
+	public void setTelemetry(Telemetry telemetry) {
+		this.telemetry = telemetry;
+	}
+
 	public boolean isRunning() {
 		return running;
 	}
@@ -68,8 +67,9 @@ public abstract class Task {
 	}
 
 	public ParallelRaceBundle withTimeout(long amount, TimeUnit unit) {
-		return new ParallelRaceBundle(telemetry, this, new WaitTask(amount, unit, telemetry));
+		return new ParallelRaceBundle(this, new WaitTask(amount, unit));
 	}
+
 	public ParallelRaceBundle withTimeout(int seconds) {
 		return withTimeout(seconds, TimeUnit.SECONDS);
 	}

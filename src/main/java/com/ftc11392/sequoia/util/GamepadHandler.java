@@ -70,23 +70,37 @@ public class GamepadHandler {
 	public BooleanSupplier rightTrigger(double threshold) {
 		return () -> gamepad.right_trigger > threshold;
 	}
-	
+
 	// Sticks
-	public BooleanSupplier sticks(double threshold) { return () -> Math.abs(gamepad.left_stick_x) > threshold || Math.abs(gamepad.left_stick_y) > threshold
-		|| Math.abs(gamepad.right_stick_x) > threshold || Math.abs(gamepad.right_stick_y) > threshold; }
+	public BooleanSupplier sticks(double threshold) {
+		return () -> Math.abs(gamepad.left_stick_x) > threshold || Math.abs(gamepad.left_stick_y) > threshold
+				|| Math.abs(gamepad.right_stick_x) > threshold || Math.abs(gamepad.right_stick_y) > threshold;
+	}
 
-	public BooleanSupplier leftStick(double threshold) { return () -> Math.abs(gamepad.left_stick_x) > threshold || Math.abs(gamepad.left_stick_y) > threshold; }
+	public BooleanSupplier leftStick(double threshold) {
+		return () -> Math.abs(gamepad.left_stick_x) > threshold || Math.abs(gamepad.left_stick_y) > threshold;
+	}
 
-	public BooleanSupplier leftStickX(double threshold) { return () -> Math.abs(gamepad.left_stick_x) > threshold; }
+	public BooleanSupplier leftStickX(double threshold) {
+		return () -> Math.abs(gamepad.left_stick_x) > threshold;
+	}
 
-	public BooleanSupplier leftStickY(double threshold) { return () -> Math.abs(gamepad.left_stick_y) > threshold; }
+	public BooleanSupplier leftStickY(double threshold) {
+		return () -> Math.abs(gamepad.left_stick_y) > threshold;
+	}
 
-	public BooleanSupplier rightStick(double threshold) { return () -> Math.abs(gamepad.right_stick_x) > threshold || Math.abs(gamepad.right_stick_y) > threshold; }
+	public BooleanSupplier rightStick(double threshold) {
+		return () -> Math.abs(gamepad.right_stick_x) > threshold || Math.abs(gamepad.right_stick_y) > threshold;
+	}
 
-	public BooleanSupplier rightStickX(double threshold) { return () -> Math.abs(gamepad.right_stick_x) > threshold; }
+	public BooleanSupplier rightStickX(double threshold) {
+		return () -> Math.abs(gamepad.right_stick_x) > threshold;
+	}
 
-	public BooleanSupplier rightStickY(double threshold) { return () -> Math.abs(gamepad.right_stick_y) > threshold; }
-	
+	public BooleanSupplier rightStickY(double threshold) {
+		return () -> Math.abs(gamepad.right_stick_y) > threshold;
+	}
+
 	// Stick buttons
 	public BooleanSupplier rightStickButton() {
 		return () -> gamepad.right_stick_button;
@@ -152,21 +166,35 @@ public class GamepadHandler {
 	}
 
 	// Stick buttons
-	public Button sticksButton(double threshold) { return new Button(sticks(threshold)); }
+	public Button sticksButton(double threshold) {
+		return new Button(sticks(threshold));
+	}
 
-	public Button leftStickButton(double threshold) { return new Button(leftStick(threshold)); }
+	public Button leftStickButton(double threshold) {
+		return new Button(leftStick(threshold));
+	}
 
-	public Button leftStickXButton(double threshold) { return new Button(leftStickX(threshold)); }
+	public Button leftStickXButton(double threshold) {
+		return new Button(leftStickX(threshold));
+	}
 
-	public Button leftStickYButton(double threshold) { return new Button(leftStickY(threshold)); }
+	public Button leftStickYButton(double threshold) {
+		return new Button(leftStickY(threshold));
+	}
 
-	public Button rightStickButton(double threshold) { return new Button(rightStick(threshold)); }
+	public Button rightStickButton(double threshold) {
+		return new Button(rightStick(threshold));
+	}
 
-	public Button rightStickXButton(double threshold) { return new Button(rightStickX(threshold)); }
+	public Button rightStickXButton(double threshold) {
+		return new Button(rightStickX(threshold));
+	}
 
-	public Button rightStickYButton(double threshold) { return new Button(rightStickY(threshold)); }
-	
-	
+	public Button rightStickYButton(double threshold) {
+		return new Button(rightStickY(threshold));
+	}
+
+
 	// Stick button buttons
 	public Button rightStickButtonButton() {
 		return new Button(rightStickButton());
@@ -228,20 +256,34 @@ public class GamepadHandler {
 	}
 
 	// Stick toggle buttons
-	public ToggleButton sticksToggleButton(double threshold) { return new ToggleButton(sticks(threshold)); }
+	public ToggleButton sticksToggleButton(double threshold) {
+		return new ToggleButton(sticks(threshold));
+	}
 
-	public ToggleButton leftStickToggleButton(double threshold) { return new ToggleButton(leftStick(threshold)); }
+	public ToggleButton leftStickToggleButton(double threshold) {
+		return new ToggleButton(leftStick(threshold));
+	}
 
-	public ToggleButton leftStickXToggleButton(double threshold) { return new ToggleButton(leftStickX(threshold)); }
+	public ToggleButton leftStickXToggleButton(double threshold) {
+		return new ToggleButton(leftStickX(threshold));
+	}
 
-	public ToggleButton leftStickYToggleButton(double threshold) { return new ToggleButton(leftStickY(threshold)); }
+	public ToggleButton leftStickYToggleButton(double threshold) {
+		return new ToggleButton(leftStickY(threshold));
+	}
 
-	public ToggleButton rightStickToggleButton(double threshold) { return new ToggleButton(rightStick(threshold)); }
+	public ToggleButton rightStickToggleButton(double threshold) {
+		return new ToggleButton(rightStick(threshold));
+	}
 
-	public ToggleButton rightStickXToggleButton(double threshold) { return new ToggleButton(rightStickX(threshold)); }
+	public ToggleButton rightStickXToggleButton(double threshold) {
+		return new ToggleButton(rightStickX(threshold));
+	}
 
-	public ToggleButton rightStickYToggleButton(double threshold) { return new ToggleButton(rightStickY(threshold)); }
-	
+	public ToggleButton rightStickYToggleButton(double threshold) {
+		return new ToggleButton(rightStickY(threshold));
+	}
+
 	// Stick toggle buttons
 	public ToggleButton rightStickButtonToggleButton() {
 		return new ToggleButton(rightStickButton());

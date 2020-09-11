@@ -1,7 +1,5 @@
 package com.ftc11392.sequoia.task;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -9,10 +7,6 @@ import java.util.HashSet;
 
 public abstract class TaskBundle extends Task {
 	private static final HashSet<Task> bundledTasks = new HashSet<>();
-
-	public TaskBundle(Telemetry telemetry) {
-		super(telemetry);
-	}
 
 	public static boolean isBundled(Task task) {
 		return bundledTasks.contains(task);

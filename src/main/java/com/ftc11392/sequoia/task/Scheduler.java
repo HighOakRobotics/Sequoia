@@ -11,7 +11,7 @@ import java.util.*;
 public final class Scheduler {
 	private static final Scheduler instance = new Scheduler();
 	private Telemetry telemetry;
-	private Clock clock = new Clock();
+	private final Clock clock = new Clock();
 
 	private final List<Task> toSchedule = new ArrayList<>();
 	private final List<Task> toCancel = new ArrayList<>();
@@ -21,6 +21,7 @@ public final class Scheduler {
 
 	private final Map<Subsystem, Task> bindings = new HashMap<>();
 	private boolean inLoop;
+
 	/**
 	 * Provides the Scheduler with its requirements.
 	 *
@@ -69,6 +70,7 @@ public final class Scheduler {
 	 * @param task the Task to cancel
 	 */
 	private void initTask(Task task) {
+		task.setTelemetry(telemetry);
 		scheduledTasks.add(task);
 		task.init();
 		for (Subsystem subsystem : task.getSubsystems()) {
@@ -213,6 +215,6 @@ public final class Scheduler {
 		double duration = clock.getSeconds();
 		telemetry.addLine("Scheduler")
 				.addData("Time", durationMs + " ms")
-				.addData("Freq", 1/duration + " Hz");
+				.addData("Freq", 1 / duration + " Hz");
 	}
 }
