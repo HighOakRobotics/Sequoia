@@ -1,7 +1,5 @@
 package com.ftc11392.sequoia.task;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -14,8 +12,7 @@ public class SwitchTask extends Task {
 	private final Supplier<Object> selector;
 	private Task selected;
 
-	public SwitchTask(Telemetry telemetry, Map<Object, Task> mapping, Supplier<Object> selector) {
-		super(telemetry);
+	public SwitchTask(Map<Object, Task> mapping, Supplier<Object> selector) {
 		TaskBundle.requireUnbundled(mapping.values());
 		TaskBundle.registerBundledTasks(mapping.values().toArray(new Task[]{}));
 
@@ -29,7 +26,7 @@ public class SwitchTask extends Task {
 
 	@Override
 	public void init() {
-		if (!mapping.keySet().contains(selector.get())) {
+		if (!mapping.containsKey(selector.get())) {
 			throw new TaskException("Invalid selector for SwitchTask");
 		}
 		selected = mapping.get(selector.get());

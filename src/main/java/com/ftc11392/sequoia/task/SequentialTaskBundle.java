@@ -1,7 +1,5 @@
 package com.ftc11392.sequoia.task;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,21 +11,20 @@ public class SequentialTaskBundle extends TaskBundle {
 	private final List<Task> tasks = new ArrayList<>();
 	private int currentTaskIndex = -1;
 
-	public SequentialTaskBundle(Telemetry telemetry, Task... tasks) {
-		super(telemetry);
+	public SequentialTaskBundle(Task... tasks) {
 		addTasks(tasks);
 	}
 
 	public void addTasks(Task... tasks) {
 		requireUnbundled(tasks);
 
-		if(currentTaskIndex != -1) {
+		if (currentTaskIndex != -1) {
 			throw new TaskException("Tasks cannot be added to a TaskBundle while the bundle is running.");
 		}
 
 		registerBundledTasks(tasks);
 
-		for(Task task : tasks) {
+		for (Task task : tasks) {
 			this.tasks.add(task);
 			subsystems.addAll(task.getSubsystems());
 		}
@@ -37,25 +34,25 @@ public class SequentialTaskBundle extends TaskBundle {
 	public void init() {
 		currentTaskIndex = 0;
 
-		if(!tasks.isEmpty()) {
+		if (!tasks.isEmpty()) {
 			tasks.get(0).init();
 		}
 	}
 
 	@Override
 	public void loop() {
-		if(tasks.isEmpty()) {
+		if (tasks.isEmpty()) {
 			return;
 		}
 
 		Task currentTask = tasks.get(currentTaskIndex);
 
 		currentTask.loop();
-		if(!currentTask.isRunning()) {
+		if (!currentTask.isRunning()) {
 			currentTask.stop(false);
 			currentTaskIndex++;
 
-			if(currentTaskIndex < tasks.size()) {
+			if (currentTaskIndex < tasks.size()) {
 				tasks.get(currentTaskIndex).init();
 			}
 		}
@@ -63,7 +60,7 @@ public class SequentialTaskBundle extends TaskBundle {
 
 	@Override
 	public void stop(boolean interrupted) {
-		if(interrupted && !tasks.isEmpty() && currentTaskIndex > -1 && currentTaskIndex < tasks.size()) {
+		if (interrupted && !tasks.isEmpty() && currentTaskIndex > -1 && currentTaskIndex < tasks.size()) {
 			tasks.get(currentTaskIndex).stop(true);
 		}
 		currentTaskIndex = -1;

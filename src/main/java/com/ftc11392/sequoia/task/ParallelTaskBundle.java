@@ -1,7 +1,5 @@
 package com.ftc11392.sequoia.task;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,8 +11,7 @@ import java.util.Set;
 public class ParallelTaskBundle extends TaskBundle {
 	private final Set<Task> tasks = new HashSet<>(); // Task task, Boolean isRunning
 
-	public ParallelTaskBundle(Telemetry telemetry, Task... tasks) {
-		super(telemetry);
+	public ParallelTaskBundle(Task... tasks) {
 		addTasks(tasks);
 	}
 
@@ -49,7 +46,7 @@ public class ParallelTaskBundle extends TaskBundle {
 
 	@Override
 	public void loop() {
-		for (Task task: tasks) {
+		for (Task task : tasks) {
 			if (!task.isRunning()) {
 				continue;
 			}

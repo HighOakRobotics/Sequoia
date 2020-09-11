@@ -1,7 +1,5 @@
 package com.ftc11392.sequoia.task;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,23 +11,21 @@ import java.util.Set;
 public class ParallelRaceBundle extends TaskBundle {
 	private final Set<Task> tasks = new HashSet<>();
 
-	public ParallelRaceBundle(Telemetry telemetry, Task... tasks) {
-		super(telemetry);
-
+	public ParallelRaceBundle(Task... tasks) {
 		addTasks(tasks);
 	}
 
 	public void addTasks(Task... tasks) {
 		requireUnbundled(tasks);
 
-		if(running) {
+		if (running) {
 			throw new TaskException("Tasks cannot be added to a TaskBundle while the bundle is running.");
 		}
 
 		registerBundledTasks(tasks);
 
-		for(Task task : tasks) {
-			if(!Collections.disjoint(task.getSubsystems(), subsystems)) {
+		for (Task task : tasks) {
+			if (!Collections.disjoint(task.getSubsystems(), subsystems)) {
 				throw new TaskException("Multiple tasks in a parallel bundle cannot require the same subsystems");
 			}
 
@@ -41,14 +37,14 @@ public class ParallelRaceBundle extends TaskBundle {
 	@Override
 	public void init() {
 		running = true;
-		for(Task task : tasks) {
+		for (Task task : tasks) {
 			task.init();
 		}
 	}
 
 	@Override
 	public void loop() {
-		for(Task task : tasks) {
+		for (Task task : tasks) {
 			task.loop();
 			if (!task.isRunning()) {
 				running = false;
@@ -58,7 +54,7 @@ public class ParallelRaceBundle extends TaskBundle {
 
 	@Override
 	public void stop(boolean interrupted) {
-		for(Task task : tasks) {
+		for (Task task : tasks) {
 			task.stop(task.isRunning());
 		}
 	}

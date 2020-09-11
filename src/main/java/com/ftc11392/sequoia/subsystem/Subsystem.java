@@ -3,7 +3,6 @@ package com.ftc11392.sequoia.subsystem;
 import com.ftc11392.sequoia.task.DefaultTask;
 import com.ftc11392.sequoia.task.Scheduler;
 import com.ftc11392.sequoia.task.Task;
-
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -27,7 +26,6 @@ public abstract class Subsystem {
 
 	/**
 	 * Instantiates a Subsystem with a DefaultTask
-	 *
 	 */
 	public Subsystem() {
 		this(new DefaultTask());

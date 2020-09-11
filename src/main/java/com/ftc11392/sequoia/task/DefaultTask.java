@@ -5,10 +5,6 @@ package com.ftc11392.sequoia.task;
  * have its own default behavior.
  */
 public class DefaultTask extends Task {
-	public DefaultTask() {
-		super(null);
-	}
-
 	@Override
 	public void init() {
 		// Empty as there is no desired behavior here
