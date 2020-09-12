@@ -43,7 +43,7 @@ public final class Scheduler {
 		telemetry.log().add("Initialized " + subsystems.size() + " subsystems.");
 	}
 
-	public static Scheduler getInstance() {
+	public static synchronized Scheduler getInstance() {
 		return instance;
 	}
 
@@ -122,8 +122,8 @@ public final class Scheduler {
 	 * Cancels all tasks ({@link Task})
 	 */
 	public void cancelAll() {
-		for (Task task : scheduledTasks) {
-			cancel(task);
+		for (int i = scheduledTasks.size() - 1; i >= 0; i--) {
+			cancel(scheduledTasks.get(i));
 		}
 	}
 
