@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 
 public class TaskTest {
 
@@ -29,7 +30,9 @@ public class TaskTest {
 
 		Task testTask = new Task() {
 			@Override
-			public void init() { }
+			public void init() {
+				addSubsystems(mockedSubsystem);
+			}
 
 			@Override
 			public void loop() { }
@@ -37,6 +40,8 @@ public class TaskTest {
 			@Override
 			public void stop(boolean interrupted) { }
 		};
+
+		assertEquals(testTask.getSubsystems().toArray()[0], mockedSubsystem);
 
 		Scheduler.getInstance().schedule(testTask);
 
