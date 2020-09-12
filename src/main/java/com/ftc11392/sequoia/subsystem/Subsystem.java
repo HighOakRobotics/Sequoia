@@ -33,6 +33,8 @@ public abstract class Subsystem {
 
 	/**
 	 * Used internally in {@link Scheduler}.
+	 *
+	 * @param telemetry The {@link Telemetry} to be passed
 	 */
 	public void assignTelemetry(Telemetry telemetry) {
 		this.telemetry = telemetry;
@@ -41,6 +43,8 @@ public abstract class Subsystem {
 	/**
 	 * Initialize hardware devices here (run during {@link com.qualcomm.robotcore.eventloop.opmode.OpMode}
 	 * <code>init()</code>).
+	 *
+	 * @param hardwareMap the {@link HardwareMap} to be passed.
 	 */
 	public abstract void initialize(HardwareMap hardwareMap);
 

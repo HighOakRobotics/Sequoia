@@ -34,6 +34,8 @@ public final class Scheduler {
 
 	/**
 	 * Initializes all subsystem hardware.
+	 *
+	 * @param hardwareMap The {@link HardwareMap} to be used for subsystem initialization.
 	 */
 	public void initSubsystems(HardwareMap hardwareMap) {
 		for (Subsystem subsystem : subsystems) {
