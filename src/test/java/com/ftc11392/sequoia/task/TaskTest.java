@@ -29,10 +29,10 @@ public class TaskTest {
 		Subsystem mockedSubsystem = mock(Subsystem.class);
 
 		Scheduler.getInstance().initSubsystems(null);
-
 		Scheduler.getInstance().loop(OpModeState.INIT_LOOP);
 
 		Task testTask = new Task() {
+
 			@Override
 			public void init() {
 				running = true;
@@ -57,7 +57,6 @@ public class TaskTest {
 		assertTrue(testTask.isRunning());
 
 		Scheduler.getInstance().cancelAll();
-
 		Scheduler.getInstance().loop(OpModeState.RUN_LOOP);
 
 		assertFalse(testTask.isRunning());
