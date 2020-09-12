@@ -22,7 +22,7 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Run Unit Tests
+      - name: Update Code Coverage
         run: ./gradlew check && ./gradlew jacocoTestReport && bash <(curl -s https://codecov.io/bash)
       - name: Upload jar file as artifact
         uses: actions/upload-artifact@v1
