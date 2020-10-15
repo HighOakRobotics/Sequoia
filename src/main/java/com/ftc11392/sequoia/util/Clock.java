@@ -47,6 +47,6 @@ public class Clock {
 	 * @return The time since the clock started in seconds.
 	 */
 	public double getSeconds() {
-		return getTime(TimeUnit.MILLISECONDS) / 1000.0;
+		return getTime(TimeUnit.NANOSECONDS) / 1000000000.0;
 	}
 }

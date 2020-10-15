@@ -29,6 +29,7 @@ public abstract class SequoiaOpMode extends OpMode {
 		gamepad1H = new GamepadHandler(gamepad1);
 		gamepad2H = new GamepadHandler(gamepad2);
 		Scheduler.getInstance().clearBehaviors();
+		Scheduler.getInstance().startSubsystems();
 		runTriggers();
 	}
 
