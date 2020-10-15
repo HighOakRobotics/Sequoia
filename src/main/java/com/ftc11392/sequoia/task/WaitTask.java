@@ -30,7 +30,7 @@ public class WaitTask extends Task {
 
 	@Override
 	public void loop() {
-		if (clock.getTime(unit) > amount) {
+		if (clock.getTime(unit) >= amount) {
 			super.running = false;
 		}
 	}

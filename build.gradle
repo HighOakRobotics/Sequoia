@@ -1,71 +1,94 @@
 plugins {
-	id 'java-library'
-	id 'maven-publish'
-	id 'com.jfrog.bintray' version '1.8.5'
+    id 'java'
+    id 'java-library'
+    id 'jacoco'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'com.jfrog.bintray' version '1.8.5'
 }
 
 java {
-	sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
-	withSourcesJar()
-	withJavadocJar()
+    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+    withSourcesJar()
+    withJavadocJar()
+}
+
+test {
+    useJUnitPlatform()
 }
 
 javadoc {
-	destinationDir = new File(rootProject.projectDir, "docs/javadoc/.")
+    destinationDir = new File(rootProject.projectDir, "docs/javadoc/.")
 }
 
 repositories {
-	jcenter()
+    jcenter()
 }
 
 dependencies {
-	implementation files("libs/RobotCore.jar")
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+    testImplementation 'org.mockito:mockito-core:3.5.10'
+    implementation files("libs/RobotCore.jar")
     implementation 'org.jetbrains:annotations:20.1.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.3'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.3'
 }
 
 String versionstr
 String releasever
 
-if(System.getenv('VERSION')) {
-	versionstr = System.getenv('VERSION')
-	releasever = versionstr.substring(versionstr.indexOf('v') + 1)
+if (System.getenv('VERSION')) {
+    versionstr = System.getenv('VERSION')
+    releasever = versionstr.substring(versionstr.indexOf('v') + 1)
 } else {
-	releasever = ''
+    releasever = ''
 }
 
 publishing {
-	publications {
-		maven(MavenPublication) {
-			groupId = 'com.ftc11392'
-			artifactId = 'sequoia'
-			version = releasever
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.ftc11392'
+            artifactId = 'sequoia'
+            version = releasever
 
-			from components.java
-		}
-	}
+            from components.java
+        }
+    }
 
-	repositories {
-		maven {
-			url = "$buildDir/repo"
-		}
-	}
+    repositories {
+        maven {
+            url = "$buildDir/repo"
+        }
+    }
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        //html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+
+
 bintray {
-	user = System.getenv('BINTRAY_USER')
-	key = System.getenv('BINTRAY_API_KEY')
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_API_KEY')
 
-	publications = ['maven']
+    publications = ['maven']
 
-	pkg {
-		repo = 'maven'
-		name = 'Sequoia'
-		userOrg = 'highoakrobotics'
-		vcsUrl = 'https://github.com/HighOakRobotics/Sequoia'
-		version {
-			name = releasever
-			desc = 'Release version v' + releasever + " of Sequoia. Refer to the GitHub page's readme for usage instructions. Please open an issue for any bugs."
-			released  = new Date()
-		}
-	}
+    pkg {
+        repo = 'maven'
+        name = 'Sequoia'
+        userOrg = 'highoakrobotics'
+        vcsUrl = 'https://github.com/HighOakRobotics/Sequoia'
+        version {
+            name = releasever
+            desc = 'Release version v' + releasever + " of Sequoia. Refer to the GitHub page's readme for usage instructions. Please open an issue for any bugs."
+            released = new Date()
+        }
+    }
 }

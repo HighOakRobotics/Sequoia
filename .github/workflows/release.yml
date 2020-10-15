@@ -3,8 +3,9 @@
 name: Release to Bintray
 
 on:
-  create:
-    branches: [ master ]
+  push:
+    branches:
+      - master
     tags:
       - v*
 
