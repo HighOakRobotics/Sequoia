@@ -31,4 +31,9 @@ public class Button extends Trigger {
 		fallingWithCancel(task);
 		return this;
 	}
+
+	public Button whilePressed(Task task) {
+		whileOn(task);
+		return this;
+	}
 }
