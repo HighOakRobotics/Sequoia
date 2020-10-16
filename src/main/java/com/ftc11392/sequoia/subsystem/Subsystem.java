@@ -75,11 +75,11 @@ public abstract class Subsystem {
 		return priority;
 	}
 
-	public void setDefaultTask(Task defaultTask) {
-		this.defaultTask = defaultTask;
-	}
-
 	public Task getDefaultTask() {
 		return defaultTask;
+	}
+
+	public void setDefaultTask(Task defaultTask) {
+		this.defaultTask = defaultTask;
 	}
 }

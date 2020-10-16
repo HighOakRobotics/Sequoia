@@ -7,17 +7,6 @@ import com.ftc11392.sequoia.task.TaskException;
 import java.util.function.BooleanSupplier;
 
 public class Trigger {
-	public enum WhileBehavior {
-		NOTHING,
-		SCHEDULE
-	}
-
-	public enum EdgeBehavior {
-		NOTHING,
-		SCHEDULE,
-		CANCEL
-	}
-
 	private final BooleanSupplier isActive;
 
 	public Trigger(BooleanSupplier isActive) {
@@ -188,5 +177,16 @@ public class Trigger {
 		});
 
 		return this;
+	}
+
+	public enum WhileBehavior {
+		NOTHING,
+		SCHEDULE
+	}
+
+	public enum EdgeBehavior {
+		NOTHING,
+		SCHEDULE,
+		CANCEL
 	}
 }

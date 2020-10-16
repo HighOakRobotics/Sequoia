@@ -136,13 +136,13 @@ public class TaskTest {
 					completed[i] = true;
 					long taskRuntime = currentTime - startTime;
 					long allowedRuntime = TimeUnit.NANOSECONDS.convert(testValues[i], timeUnits[i]);
-					long runtimeDifference = Math.abs(taskRuntime-allowedRuntime);
+					long runtimeDifference = Math.abs(taskRuntime - allowedRuntime);
 					assertTrue(runtimeDifference <= testMargins[i],
 							"Testing:            " + i +
-							"\nExpected runtime:   " + allowedRuntime +
-							"\nActual runtime:     " + taskRuntime +
-							"\nRuntime difference: " + runtimeDifference +
-							"\nAllowed difference: " + testMargins[i]);
+									"\nExpected runtime:   " + allowedRuntime +
+									"\nActual runtime:     " + taskRuntime +
+									"\nRuntime difference: " + runtimeDifference +
+									"\nAllowed difference: " + testMargins[i]);
 					completedTasks++;
 				}
 			}
