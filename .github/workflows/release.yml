@@ -3,10 +3,8 @@
 name: Release to Bintray
 
 on:
-  create:
-    branches: [ master ]
-    tags:
-      - v*
+  release:
+    types: [created]
 
 jobs:
   build:

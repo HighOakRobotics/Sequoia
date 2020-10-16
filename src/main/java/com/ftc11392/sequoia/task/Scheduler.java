@@ -4,9 +4,12 @@ import com.ftc11392.sequoia.subsystem.Subsystem;
 import com.ftc11392.sequoia.util.Clock;
 import com.ftc11392.sequoia.util.OpModeState;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.*;
+
 
 public final class Scheduler {
 	private static final Scheduler instance = new Scheduler();
@@ -22,6 +25,8 @@ public final class Scheduler {
 	private final Map<Subsystem, Task> bindings = new HashMap<>();
 	private boolean inLoop;
 
+
+	private static final Logger log = LogManager.getLogger(Scheduler.class);
 	/**
 	 * Provides the Scheduler with its requirements.
 	 *
@@ -34,6 +39,8 @@ public final class Scheduler {
 
 	/**
 	 * Initializes all subsystem hardware.
+	 *
+	 * @param hardwareMap The {@link HardwareMap} to be used for subsystem initialization.
 	 */
 	public void initSubsystems(HardwareMap hardwareMap) {
 		subsystems.sort(Comparator.comparingInt(Subsystem::getPriority));
@@ -44,7 +51,13 @@ public final class Scheduler {
 		telemetry.log().add("Initialized " + subsystems.size() + " subsystems.");
 	}
 
-	public static Scheduler getInstance() {
+	public void startSubsystems() {
+		for (Subsystem subsystem : subsystems) {
+			subsystem.start();
+		}
+	}
+
+	public static synchronized Scheduler getInstance() {
 		return instance;
 	}
 
@@ -123,8 +136,8 @@ public final class Scheduler {
 	 * Cancels all tasks ({@link Task})
 	 */
 	public void cancelAll() {
-		for (Task task : scheduledTasks) {
-			cancel(task);
+		for (int i = scheduledTasks.size() - 1; i >= 0; i--) {
+			cancel(scheduledTasks.get(i));
 		}
 	}
 
@@ -216,6 +229,7 @@ public final class Scheduler {
 		double duration = clock.getSeconds();
 		telemetry.addLine("Scheduler")
 				.addData("Time", durationMs + " ms")
-				.addData("Freq", 1 / duration + " Hz");
+				.addData("Freq", 1.0 / duration + " Hz");
+		log.info("Time: " + durationMs + "ms, Freq: " + 1.0 / duration + "Hz");
 	}
 }
