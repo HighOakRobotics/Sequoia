@@ -13,7 +13,7 @@ import java.util.*;
 
 public final class Scheduler {
 	private static final Scheduler instance = new Scheduler();
-	private Telemetry telemetry;
+	private static final Logger log = LogManager.getLogger(Scheduler.class);
 	private final Clock clock = new Clock();
 
 	private final List<Task> toSchedule = new ArrayList<>();
@@ -23,10 +23,13 @@ public final class Scheduler {
 	private final List<Runnable> behaviors = new ArrayList<>();
 
 	private final Map<Subsystem, Task> bindings = new HashMap<>();
+	private Telemetry telemetry;
 	private boolean inLoop;
 
+	public static synchronized Scheduler getInstance() {
+		return instance;
+	}
 
-	private static final Logger log = LogManager.getLogger(Scheduler.class);
 	/**
 	 * Provides the Scheduler with its requirements.
 	 *
@@ -43,6 +46,7 @@ public final class Scheduler {
 	 * @param hardwareMap The {@link HardwareMap} to be used for subsystem initialization.
 	 */
 	public void initSubsystems(HardwareMap hardwareMap) {
+		subsystems.sort(Comparator.comparingInt(Subsystem::getPriority));
 		for (Subsystem subsystem : subsystems) {
 			subsystem.assignTelemetry(telemetry);
 			subsystem.initialize(hardwareMap);
@@ -54,10 +58,6 @@ public final class Scheduler {
 		for (Subsystem subsystem : subsystems) {
 			subsystem.start();
 		}
-	}
-
-	public static synchronized Scheduler getInstance() {
-		return instance;
 	}
 
 	/**

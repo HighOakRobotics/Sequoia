@@ -3,9 +3,9 @@ package com.ftc11392.sequoia.triggers;
 import java.util.function.BooleanSupplier;
 
 public class ToggleTrigger extends Trigger {
+	private final boolean rising;
 	private boolean lastPoll = false;
 	private boolean currentState = false;
-	private boolean rising;
 
 	/**
 	 * Creates a toggling trigger.
