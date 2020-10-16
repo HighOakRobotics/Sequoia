@@ -14,7 +14,7 @@ public abstract class Subsystem {
 
 	protected Task defaultTask = new DefaultTask();
 
-	protected Integer priority = null;
+	protected int priority = Integer.MAX_VALUE;
 
 	/**
 	 * Instantiates a Subsystem

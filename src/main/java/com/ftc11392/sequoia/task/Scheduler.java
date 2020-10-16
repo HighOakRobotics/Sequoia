@@ -36,6 +36,7 @@ public final class Scheduler {
 	 * Initializes all subsystem hardware.
 	 */
 	public void initSubsystems(HardwareMap hardwareMap) {
+		subsystems.sort(Comparator.comparingInt(Subsystem::getPriority));
 		for (Subsystem subsystem : subsystems) {
 			subsystem.assignTelemetry(telemetry);
 			subsystem.initialize(hardwareMap);
