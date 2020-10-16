@@ -14,6 +14,8 @@ public abstract class Subsystem {
 
 	protected Task defaultTask = new DefaultTask();
 
+	protected Integer priority = null;
+
 	/**
 	 * Instantiates a Subsystem
 	 *
@@ -59,6 +61,10 @@ public abstract class Subsystem {
 	 * is called. Usually cleanup actions.
 	 */
 	public abstract void stop();
+
+	public Integer getPriority() {
+		return priority;
+	}
 
 	public void setDefaultTask(Task defaultTask) {
 		this.defaultTask = defaultTask;
