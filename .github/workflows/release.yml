@@ -1,7 +1,6 @@
 # This workflow will deploy a JAR artifact along with the regular build.
 
-name: Release to Bintray
-
+name: Bintray Release
 on:
   release:
     types: [created]
