@@ -36,11 +36,11 @@ public abstract class SequoiaOpMode extends OpMode {
 	@Override
 	public void loop() {
 		Scheduler.getInstance().loop(OpModeState.RUN_LOOP);
-
 	}
 
 	@Override
 	public void stop() {
+		Scheduler.getInstance().stopSubsystems();
 		resetScheduler();
 	}
 

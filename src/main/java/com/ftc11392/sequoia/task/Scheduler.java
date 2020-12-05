@@ -60,6 +60,12 @@ public final class Scheduler {
 		}
 	}
 
+	public void stopSubsystems() {
+		for (Subsystem subsystem : subsystems) {
+			subsystem.stop();
+		}
+	}
+
 	/**
 	 * Adds the given subsystems ({@link Subsystem}) to the Scheduler.
 	 *
