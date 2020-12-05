@@ -120,11 +120,11 @@ public class TaskTest {
 		// ---START TIMEOUT TEST---
 		long startTime = System.nanoTime();
 		long currentTime;
-		long[] testMargins = { // 10 ms of margin
-				10000000L,
-				10000000L,
-				10000000L,
-				10000000L
+		long[] testMargins = { // 50 ms of margin
+				50000000L,
+				50000000L,
+				50000000L,
+				50000000L
 		};
 		int completedTasks = 0;
 		boolean[] completed = new boolean[timeoutCount];
@@ -136,13 +136,13 @@ public class TaskTest {
 					completed[i] = true;
 					long taskRuntime = currentTime - startTime;
 					long allowedRuntime = TimeUnit.NANOSECONDS.convert(testValues[i], timeUnits[i]);
-					long runtimeDifference = Math.abs(taskRuntime-allowedRuntime);
+					long runtimeDifference = Math.abs(taskRuntime - allowedRuntime);
 					assertTrue(runtimeDifference <= testMargins[i],
 							"Testing:            " + i +
-							"\nExpected runtime:   " + allowedRuntime +
-							"\nActual runtime:     " + taskRuntime +
-							"\nRuntime difference: " + runtimeDifference +
-							"\nAllowed difference: " + testMargins[i]);
+									"\nExpected runtime:   " + allowedRuntime +
+									"\nActual runtime:     " + taskRuntime +
+									"\nRuntime difference: " + runtimeDifference +
+									"\nAllowed difference: " + testMargins[i]);
 					completedTasks++;
 				}
 			}

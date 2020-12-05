@@ -4,8 +4,8 @@ import com.ftc11392.sequoia.subsystem.Subsystem;
 import com.ftc11392.sequoia.util.Clock;
 import com.ftc11392.sequoia.util.OpModeState;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.*;
@@ -13,7 +13,7 @@ import java.util.*;
 
 public final class Scheduler {
 	private static final Scheduler instance = new Scheduler();
-	private Telemetry telemetry;
+	//private static final Logger log = LogManager.getLogger(Scheduler.class);
 	private final Clock clock = new Clock();
 
 	private final List<Task> toSchedule = new ArrayList<>();
@@ -23,10 +23,13 @@ public final class Scheduler {
 	private final List<Runnable> behaviors = new ArrayList<>();
 
 	private final Map<Subsystem, Task> bindings = new HashMap<>();
+	private Telemetry telemetry;
 	private boolean inLoop;
 
+	public static synchronized Scheduler getInstance() {
+		return instance;
+	}
 
-	private static final Logger log = LogManager.getLogger(Scheduler.class);
 	/**
 	 * Provides the Scheduler with its requirements.
 	 *
@@ -43,6 +46,7 @@ public final class Scheduler {
 	 * @param hardwareMap The {@link HardwareMap} to be used for subsystem initialization.
 	 */
 	public void initSubsystems(HardwareMap hardwareMap) {
+		subsystems.sort(Comparator.comparingInt(Subsystem::getPriority));
 		for (Subsystem subsystem : subsystems) {
 			subsystem.assignTelemetry(telemetry);
 			subsystem.initialize(hardwareMap);
@@ -56,8 +60,10 @@ public final class Scheduler {
 		}
 	}
 
-	public static synchronized Scheduler getInstance() {
-		return instance;
+	public void stopSubsystems() {
+		for (Subsystem subsystem : subsystems) {
+			subsystem.stop();
+		}
 	}
 
 	/**
@@ -85,9 +91,11 @@ public final class Scheduler {
 	private void initTask(Task task) {
 		task.setTelemetry(telemetry);
 		scheduledTasks.add(task);
+		task.running = true;
 		task.init();
-		for (Subsystem subsystem : task.getSubsystems()) {
-			bindings.put(subsystem, task);
+		Subsystem[] taskSubsystems = task.getSubsystems().toArray(new Subsystem[0]);
+		for (int i = 0; i < taskSubsystems.length; i++) {
+			bindings.put(taskSubsystems[i], task);
 		}
 	}
 
@@ -103,14 +111,15 @@ public final class Scheduler {
 		}
 
 		if (!Collections.disjoint(bindings.keySet(), task.getSubsystems())) {
-			for (Subsystem subsystem : task.getSubsystems()) {
-				if (bindings.containsKey(subsystem) && !bindings.get(subsystem).isInterruptible()) {
+			Subsystem[] taskSubsystems = task.getSubsystems().toArray(new Subsystem[0]);
+			for (int i = 0; i < taskSubsystems.length; i++) {
+				if (bindings.containsKey(taskSubsystems[i]) && !bindings.get(taskSubsystems[i]).isInterruptible()) {
 					return;
 				}
 			}
-			for (Subsystem subsystem : task.getSubsystems())
-				if (bindings.containsKey(subsystem))
-					cancel(bindings.get(subsystem));
+			for (int i = 0; i < taskSubsystems.length; i++)
+				if (bindings.containsKey(taskSubsystems[i]))
+					cancel(bindings.get(taskSubsystems[i]));
 		}
 		initTask(task);
 	}
@@ -156,12 +165,12 @@ public final class Scheduler {
 	private void runPeriodics(OpModeState state) {
 		switch (state) {
 			case INIT_LOOP:
-				for (Subsystem subsystem : subsystems)
-					subsystem.initPeriodic();
+				for (int i = 0; i < subsystems.size(); i++)
+					subsystems.get(i).initPeriodic();
 				break;
 			case RUN_LOOP:
-				for (Subsystem subsystem : subsystems)
-					subsystem.runPeriodic();
+				for (int i = 0; i < subsystems.size(); i++)
+					subsystems.get(i).runPeriodic();
 				break;
 			default:
 				// Should there be a SchedulerException?
@@ -177,11 +186,11 @@ public final class Scheduler {
 		// For each command:
 		// Run loop methods of this command (initloop or loop depending on state)
 		// If command is now finished, remove it from iterator / any requirements it had required
-		for (Task task : scheduledTasks) {
-			task.loop();
-			if (!task.isRunning()) {
-				task.stop(false);
-				bindings.keySet().removeAll(task.getSubsystems());
+		for (int i = 0; i < scheduledTasks.size(); i++) {
+			scheduledTasks.get(i).loop();
+			if (!scheduledTasks.get(i).isRunning()) {
+				scheduledTasks.get(i).stop(false);
+				bindings.keySet().removeAll(scheduledTasks.get(i).getSubsystems());
 			}
 		}
 
@@ -202,33 +211,33 @@ public final class Scheduler {
 		runPeriodics(state);
 		// Check for any triggers (poll buttons) and add any corresponding commands
 		// (do nothing if it's trying to use already-used subsystems that can't be interrupted)
-		for (Runnable behavior : behaviors) {
-			behavior.run();
+		for (int i = 0; i < behaviors.size(); i++) {
+			behaviors.get(i).run();
 		}
 
 		runTasks();
 
 		// Resolve any commands that had to be queued because of iteration here (schedule them)
 		// Empty any to schedule / to cancel queues
-		for (Task task : toSchedule)
-			schedule(task);
-		for (Task task : toCancel)
-			cancel(task);
+		for (int i = 0; i < toSchedule.size(); i++)
+			schedule(toSchedule.get(i));
+		for (int i = 0; i < toCancel.size(); i++)
+			cancel(toCancel.get(i));
 
 		toSchedule.clear();
 		toCancel.clear();
 
 		// Now check all subsystems to see if they have been used - any unrequired subsystems
 		// will have the default method called.
-		for (Subsystem subsystem : subsystems) {
-			schedule(subsystem.getDefaultTask());
+		for (int i = 0; i < subsystems.size(); i++) {
+			schedule(subsystems.get(i).getDefaultTask());
 		}
 
 		long durationMs = clock.getMillis();
 		double duration = clock.getSeconds();
 		telemetry.addLine("Scheduler")
 				.addData("Time", durationMs + " ms")
-				.addData("Freq", 1.0 / duration + " Hz");
-		log.info("Time: " + durationMs + "ms, Freq: " + 1.0 / duration + "Hz");
+				.addData("Freq", "%.2f Hz", 1.0 / duration);
+		//log.info("Time: " + durationMs + "ms, Freq: " + 1.0 / duration + "Hz");
 	}
 }

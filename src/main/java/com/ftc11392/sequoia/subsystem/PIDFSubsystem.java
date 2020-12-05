@@ -9,9 +9,8 @@ import com.ftc11392.sequoia.util.PIDFController;
  */
 public abstract class PIDFSubsystem extends Subsystem {
 	protected final PIDFController controller;
-
+	private final double setpoint;
 	protected boolean enabled = false;
-	private double setpoint;
 
 	/**
 	 * Instantiates a PIDFSubsystem.

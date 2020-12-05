@@ -12,7 +12,7 @@ public abstract class Task {
 	protected Telemetry telemetry;
 
 	protected boolean interruptible = true;
-	protected boolean running;
+	protected boolean running = false;
 
 	/**
 	 * Adds {@link Subsystem} to the Task as dependencies for it to be scheduled.

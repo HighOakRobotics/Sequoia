@@ -1,13 +1,9 @@
 # This workflow will deploy a JAR artifact along with the regular build.
 
-name: Release to Bintray
-
+name: Bintray Release
 on:
-  push:
-    branches:
-      - master
-    tags:
-      - v*
+  release:
+    types: [created]
 
 jobs:
   build:
