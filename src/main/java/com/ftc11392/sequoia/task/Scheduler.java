@@ -236,7 +236,7 @@ public final class Scheduler {
 		double duration = clock.getSeconds();
 		telemetry.addLine("Scheduler")
 				.addData("Time", durationMs + " ms")
-				.addData("Freq", 1.0 / duration + " Hz");
+				.addData("Freq", "%.2f Hz", 1.0 / duration);
 		//log.info("Time: " + durationMs + "ms, Freq: " + 1.0 / duration + "Hz");
 	}
 }

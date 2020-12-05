@@ -51,6 +51,11 @@ public abstract class Subsystem {
 	public abstract void initialize(HardwareMap hardwareMap);
 
 	/**
+	 * Runs periodically in the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} init loop.
+	 */
+	public abstract void initPeriodic();
+
+	/**
 	 * Runs once in the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} <code>start()</code> method between init and loop.
 	 */
 	public abstract void start();
@@ -59,11 +64,6 @@ public abstract class Subsystem {
 	 * Runs periodically in the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} run loop.
 	 */
 	public abstract void runPeriodic();
-
-	/**
-	 * Runs periodically in the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} init loop.
-	 */
-	public abstract void initPeriodic();
 
 	/**
 	 * Runs when the {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} <code>stop()</code> method
