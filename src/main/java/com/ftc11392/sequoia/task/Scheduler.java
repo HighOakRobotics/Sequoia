@@ -91,6 +91,7 @@ public final class Scheduler {
 	private void initTask(Task task) {
 		task.setTelemetry(telemetry);
 		scheduledTasks.add(task);
+		task.running = true;
 		task.init();
 		Subsystem[] taskSubsystems = task.getSubsystems().toArray(new Subsystem[0]);
 		for (int i = 0; i < taskSubsystems.length; i++) {
