@@ -120,11 +120,11 @@ public class TaskTest {
 		// ---START TIMEOUT TEST---
 		long startTime = System.nanoTime();
 		long currentTime;
-		long[] testMargins = { // 10 ms of margin
-				10000000L,
-				10000000L,
-				10000000L,
-				10000000L
+		long[] testMargins = { // 50 ms of margin
+				50000000L,
+				50000000L,
+				50000000L,
+				50000000L
 		};
 		int completedTasks = 0;
 		boolean[] completed = new boolean[timeoutCount];
