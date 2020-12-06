@@ -138,7 +138,9 @@ public class ParallelTaskBundleTest {
 		testTask2.addSubsystems(mockedSubsystem);
 
 		assertEquals(testTask.getSubsystems().toArray()[0], testTask2.getSubsystems().toArray()[0]);
-		Throwable thrownException = assertThrows(TaskException.class, () -> { ParallelTaskBundle testParallelTaskBundle = new ParallelTaskBundle(testTask, testTask2); });
+		Throwable thrownException = assertThrows(TaskException.class, () -> {
+			ParallelTaskBundle testParallelTaskBundle = new ParallelTaskBundle(testTask, testTask2);
+		});
 		assertEquals(thrownException.getMessage(), "Multiple tasks in a parallel bundle cannot require the same subsystems");
 	}
 }
