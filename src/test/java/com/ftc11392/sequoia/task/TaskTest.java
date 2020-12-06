@@ -65,9 +65,9 @@ public class TaskTest {
 		assertFalse(testTask.isRunning());
 	}
 
-	@DisplayName("Test Task Timeout")
+	@DisplayName("Test Task With Timeout")
 	@Test
-	public void testTaskTimeout() {
+	public void testTaskWithTimeout() {
 		int timeoutCount = 4;
 
 		Scheduler.getInstance().cancelAll();
