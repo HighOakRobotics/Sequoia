@@ -4,8 +4,6 @@ import com.ftc11392.sequoia.subsystem.Subsystem;
 import com.ftc11392.sequoia.util.Clock;
 import com.ftc11392.sequoia.util.OpModeState;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.*;
