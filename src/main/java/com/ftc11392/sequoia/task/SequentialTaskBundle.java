@@ -25,7 +25,6 @@ public class SequentialTaskBundle extends TaskBundle {
 		registerBundledTasks(tasks);
 
 		for (Task task : tasks) {
-			System.out.println("Registering new " + task.getClass());
 			this.tasks.add(task);
 			subsystems.addAll(task.getSubsystems());
 		}
@@ -33,7 +32,6 @@ public class SequentialTaskBundle extends TaskBundle {
 
 	@Override
 	public void init() {
-		System.out.println("Init loop called");
 		currentTaskIndex = 0;
 
 		if (!tasks.isEmpty()) {
@@ -43,7 +41,6 @@ public class SequentialTaskBundle extends TaskBundle {
 
 	@Override
 	public void loop() {
-		System.out.println("Loop method called");
 		if (tasks.isEmpty()) {
 			return;
 		}
@@ -63,7 +60,6 @@ public class SequentialTaskBundle extends TaskBundle {
 
 	@Override
 	public void stop(boolean interrupted) {
-		System.out.println("Stop method called");
 		if (interrupted && !tasks.isEmpty() && currentTaskIndex > -1 && currentTaskIndex < tasks.size()) {
 			tasks.get(currentTaskIndex).stop(true);
 		}
