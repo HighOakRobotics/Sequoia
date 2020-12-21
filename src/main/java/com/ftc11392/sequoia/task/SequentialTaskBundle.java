@@ -68,6 +68,6 @@ public class SequentialTaskBundle extends TaskBundle {
 
 	@Override
 	public boolean isRunning() {
-		return currentTaskIndex != tasks.size();
+		return currentTaskIndex != tasks.size() && currentTaskIndex != -1;
 	}
 }
