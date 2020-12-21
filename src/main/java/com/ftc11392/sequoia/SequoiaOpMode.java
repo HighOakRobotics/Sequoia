@@ -14,40 +14,41 @@ public abstract class SequoiaOpMode extends OpMode {
 	@Override
 	public void init() {
 		scheduler = Scheduler.getInstance();
+		resetScheduler();
 		scheduler.init(telemetry);
-		Scheduler.getInstance().initSubsystems(hardwareMap);
+		scheduler.initSubsystems(hardwareMap);
 		initTriggers();
 	}
 
 	@Override
 	public void init_loop() {
-		Scheduler.getInstance().loop(OpModeState.INIT_LOOP);
+		scheduler.loop(OpModeState.INIT_LOOP);
 	}
 
 	@Override
 	public void start() {
 		gamepad1H = new GamepadHandler(gamepad1);
 		gamepad2H = new GamepadHandler(gamepad2);
-		Scheduler.getInstance().clearBehaviors();
-		Scheduler.getInstance().startSubsystems();
+		scheduler.clearBehaviors();
+		scheduler.startSubsystems();
 		runTriggers();
 	}
 
 	@Override
 	public void loop() {
-		Scheduler.getInstance().loop(OpModeState.RUN_LOOP);
+		scheduler.loop(OpModeState.RUN_LOOP);
 	}
 
 	@Override
 	public void stop() {
-		Scheduler.getInstance().stopSubsystems();
+		scheduler.stopSubsystems();
 		resetScheduler();
 	}
 
 	private void resetScheduler() { // would this be better placed in Scheduler?
-		Scheduler.getInstance().cancelAll();
-		Scheduler.getInstance().clearBehaviors();
-		Scheduler.getInstance().clearSubsystems();
+		scheduler.cancelAll();
+		scheduler.clearBehaviors();
+		scheduler.clearSubsystems();
 	}
 
 	/**
