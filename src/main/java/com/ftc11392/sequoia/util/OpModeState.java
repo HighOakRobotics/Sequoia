@@ -6,6 +6,7 @@ package com.ftc11392.sequoia.util;
 public enum OpModeState {
 	INIT,
 	INIT_LOOP,
+	STARTED,
 	RUN_LOOP,
 	STOPPED
 }
