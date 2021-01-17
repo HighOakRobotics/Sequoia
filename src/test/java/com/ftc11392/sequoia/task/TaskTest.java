@@ -16,7 +16,7 @@ public class TaskTest {
 
 	@DisplayName("Test Task Lifecycle")
 	@Test
-	public void TestTaskLifecycle() {
+	public void testTaskLifecycle() {
 		Scheduler.getInstance().cancelAll();
 		Scheduler.getInstance().clearSubsystems();
 		Scheduler.getInstance().clearBehaviors();
