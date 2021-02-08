@@ -170,10 +170,6 @@ public final class Scheduler {
 				for (int i = 0; i < subsystems.size(); i++)
 					subsystems.get(i).runPeriodic();
 				break;
-			case STARTED:
-			case STOPPED:
-			case INIT:
-				break;
 			default:
 				// Should there be a SchedulerException?
 				throw new TaskException("The Scheduler should not be running in this state.");
