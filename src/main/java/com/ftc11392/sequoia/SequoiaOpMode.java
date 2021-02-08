@@ -15,7 +15,6 @@ public abstract class SequoiaOpMode extends OpMode {
 	@Override
 	public void init() {
 		scheduler = Scheduler.getInstance();
-		resetScheduler();
 		scheduler.init(telemetry);
 		scheduler.initSubsystems(hardwareMap);
 		initTriggers();
