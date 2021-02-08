@@ -15,7 +15,7 @@ import static org.mockito.Mockito.*;
 public class SequentialTaskBundleTest {
 	@DisplayName("Test Sequential Task Bundle")
 	@Test
-	public void TestSequentialTaskBundle() {
+	public void testSequentialTaskBundle() {
 		Scheduler.getInstance().cancelAll();
 		Scheduler.getInstance().clearSubsystems();
 		Scheduler.getInstance().clearBehaviors();

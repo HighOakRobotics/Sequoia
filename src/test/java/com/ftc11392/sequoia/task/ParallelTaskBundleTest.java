@@ -15,7 +15,7 @@ public class ParallelTaskBundleTest {
 
 	@DisplayName("Test Parallel Task Bundle")
 	@Test
-	public void TestParallelTaskBundle() {
+	public void testParallelTaskBundle() {
 		Scheduler.getInstance().cancelAll();
 		Scheduler.getInstance().clearSubsystems();
 		Scheduler.getInstance().clearBehaviors();
@@ -83,7 +83,7 @@ public class ParallelTaskBundleTest {
 
 	@DisplayName("Test Parallel Task Bundle Same Subsystem")
 	@Test
-	public void TestSameSubsystem() {
+	public void testSameSubsystem() {
 		Scheduler.getInstance().cancelAll();
 		Scheduler.getInstance().clearSubsystems();
 		Scheduler.getInstance().clearBehaviors();
