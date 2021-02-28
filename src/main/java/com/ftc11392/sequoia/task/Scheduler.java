@@ -236,6 +236,9 @@ public final class Scheduler {
 		telemetry.addLine("Scheduler")
 				.addData("Time", durationMs + " ms")
 				.addData("Freq", "%.2f Hz", 1.0 / duration);
+		telemetry.addLine("Tasks")
+				.addData("Scheduled", scheduledTasks.size());
+		telemetry.addData("Behaviors", behaviors.size());
 		//log.info("Time: " + durationMs + "ms, Freq: " + 1.0 / duration + "Hz");
 	}
 }
