@@ -21,6 +21,6 @@ jobs:
       - name: Upload to GitHub Packages with Gradle
         env:
           TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-          USERNAME: stinggyray
+          USERNAME: Stinggyray
           VERSION: ${{ github.ref }}
         run: ./gradlew publish
