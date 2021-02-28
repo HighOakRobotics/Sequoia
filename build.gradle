@@ -5,7 +5,6 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'com.jfrog.bintray' version '1.8.5'
 }
 
 java {
@@ -29,7 +28,7 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
-    testImplementation 'org.mockito:mockito-core:3.7.7'
+    testImplementation 'org.mockito:mockito-core:3.8.0'
     implementation files("libs/RobotCore.jar")
     implementation 'org.jetbrains:annotations:20.1.0'
     //implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.3'
@@ -48,18 +47,23 @@ if (System.getenv('VERSION')) {
 
 publishing {
     publications {
-        maven(MavenPublication) {
-            groupId = 'com.ftc11392'
-            artifactId = 'sequoia'
+        gpr(MavenPublication) {
+            groupId = "com.ftc11392"
+            artifactId = "sequoia"
             version = releasever
-
             from components.java
         }
     }
 
     repositories {
         maven {
-            url = "$buildDir/repo"
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/highoakrobotics/sequoia")
+
+            credentials {
+                username = System.getenv("USERNAME")
+                password = System.getenv("TOKEN")
+            }
         }
     }
 }
@@ -69,26 +73,5 @@ jacocoTestReport {
         xml.enabled true
         csv.enabled false
         //html.destination file("${buildDir}/jacocoHtml")
-    }
-}
-
-
-
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_API_KEY')
-
-    publications = ['maven']
-
-    pkg {
-        repo = 'maven'
-        name = 'Sequoia'
-        userOrg = 'highoakrobotics'
-        vcsUrl = 'https://github.com/HighOakRobotics/Sequoia'
-        version {
-            name = releasever
-            desc = 'Release version v' + releasever + " of Sequoia. Refer to the GitHub page's readme for usage instructions. Please open an issue for any bugs."
-            released = new Date()
-        }
     }
 }
