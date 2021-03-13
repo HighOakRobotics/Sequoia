@@ -188,6 +188,7 @@ public final class Scheduler {
 			scheduledTasks.get(i).loop();
 			if (!scheduledTasks.get(i).isRunning()) {
 				scheduledTasks.get(i).stop(false);
+				toCancel.add(scheduledTasks.get(i));
 				bindings.keySet().removeAll(scheduledTasks.get(i).getSubsystems());
 			}
 		}
@@ -225,11 +226,13 @@ public final class Scheduler {
 		toSchedule.clear();
 		toCancel.clear();
 
+		/*
 		// Now check all subsystems to see if they have been used - any unrequired subsystems
 		// will have the default method called.
 		for (int i = 0; i < subsystems.size(); i++) {
 			schedule(subsystems.get(i).getDefaultTask());
 		}
+		 */
 
 		long durationMs = clock.getMillis();
 		double duration = clock.getSeconds();

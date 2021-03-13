@@ -8,12 +8,12 @@ public class InstantTask extends Task {
 
 	public InstantTask(Runnable toRun) {
 		this.toRun = toRun;
-		running = false;
 	}
 
 	@Override
 	public void init() {
 		toRun.run();
+		running = false;
 	}
 
 	@Override

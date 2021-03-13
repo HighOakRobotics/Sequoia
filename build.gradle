@@ -5,6 +5,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
+    id 'signing'
 }
 
 java {
@@ -45,24 +46,78 @@ if (System.getenv('VERSION')) {
     releasever = ''
 }
 
+signing {
+    def signingKey = System.getenv("SIGNING_KEY")
+    def signingPassword = findProperty("SIGNING_PASSWORD")
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign publishing.publications.mavenJava
+}
+
 publishing {
     publications {
-        gpr(MavenPublication) {
-            groupId = "com.ftc11392"
-            artifactId = "sequoia"
-            version = releasever
-            from components.java
+        mavenJava(MavenPublication) {
+            pom {
+                groupId = "com.ftc11392.sequoia"
+                artifactId = "sequoia"
+                version = releasever
+                packaging = "jar"
+
+                from components.java
+
+                name = "Sequoia"
+                description = "A First Tech Challenge library for subsystem management and command-" +
+                        "based programming built on top of the FTC SDK."
+                url = "https://github.com/HighOakRobotics/Sequoia"
+
+                licenses {
+                    license {
+                        name = "BSD-3"
+                        url = "https://opensource.org/licenses/BSD-3-Clause"
+                    }
+                }
+
+                developers {
+                    developer {
+                        name = "Raymond Zhao"
+                        email = "stinggyray@gmail.com"
+                        organization = "High Oak Robotics"
+                        organizationUrl = "https://github.com/HighOakRobotics"
+                    }
+                    developer {
+                        name = "Brian Lu"
+                        email = ""
+                        organization = "High Oak Robotics"
+                        organizationUrl = "https://github.com/HighOakRobotics"
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git@github.com:HighOakRobotics/Sequoia.git'
+                    developerConnection = 'scm:git:git@github.com:HighOakRobotics/Sequoia.git'
+                    url = 'https://github.com/HighOakRobotics/Sequoia'
+                }
+            }
+
         }
     }
 
     repositories {
         maven {
+            /*
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/highoakrobotics/sequoia")
 
             credentials {
                 username = System.getenv("USERNAME")
                 password = System.getenv("TOKEN")
+            }
+             */
+            name = "OSSRH"
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+
+            credentials {
+                username = System.getenv("OSSRH_USERNAME")
+                password = System.getenv("OSSRH_TOKEN")
             }
         }
     }
