@@ -1,6 +1,6 @@
 # This workflow will deploy a JAR artifact along with the regular build.
 
-name: GitHub Packages Deployment
+name: OSSRH Maven Deployment
 on:
   release:
     types: [created]
@@ -18,7 +18,7 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Upload to GitHub Packages with Gradle
+      - name: Upload to OSSRH Packages with Gradle
         env:
           OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
           OSSRH_USERNAME: Stinggyray
