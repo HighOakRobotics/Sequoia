@@ -45,13 +45,6 @@ if (System.getenv('VERSION')) {
 } else {
     releasever = ''
 }
-/*
-signing {
-    def signingKey = System.getenv("SIGNING_KEY")
-    def signingPassword = findProperty("SIGNING_PASSWORD")
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    sign publishing.publications.mavenJava
-}*/
 
 publishing {
     publications {
@@ -85,7 +78,7 @@ publishing {
                     }
                     developer {
                         name = "Brian Lu"
-                        email = ""
+                        email = "lu_haoqin@outlook.com"
                         organization = "High Oak Robotics"
                         organizationUrl = "https://github.com/HighOakRobotics"
                     }
@@ -113,7 +106,7 @@ publishing {
             }
              */
             name = "OSSRH"
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2")
 
             credentials {
                 username = System.getenv("OSSRH_USERNAME")
@@ -121,6 +114,13 @@ publishing {
             }
         }
     }
+}
+
+signing {
+    def signingKey = System.getenv("SIGNING_KEY")
+    def signingPassword = System.getenv("SIGNING_PASSWORD")
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign publishing.publications.mavenJava
 }
 
 jacocoTestReport {

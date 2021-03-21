@@ -20,7 +20,9 @@ jobs:
         run: ./gradlew build
       - name: Upload to GitHub Packages with Gradle
         env:
-          TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-          USERNAME: Stinggyray
+          OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
+          OSSRH_USERNAME: Stinggyray
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
           VERSION: ${{ github.ref }}
         run: ./gradlew publish
