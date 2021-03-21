@@ -24,6 +24,9 @@ public final class Scheduler {
 	private Telemetry telemetry;
 	private boolean inLoop;
 
+	// TODO Might want to move this functionality outside of the scheduler
+	private final Map<String, String> persistentStore = new HashMap<>();
+
 	public static synchronized Scheduler getInstance() {
 		return instance;
 	}
@@ -188,6 +191,7 @@ public final class Scheduler {
 			scheduledTasks.get(i).loop();
 			if (!scheduledTasks.get(i).isRunning()) {
 				scheduledTasks.get(i).stop(false);
+				toCancel.add(scheduledTasks.get(i));
 				bindings.keySet().removeAll(scheduledTasks.get(i).getSubsystems());
 			}
 		}
@@ -225,11 +229,13 @@ public final class Scheduler {
 		toSchedule.clear();
 		toCancel.clear();
 
+		/*
 		// Now check all subsystems to see if they have been used - any unrequired subsystems
 		// will have the default method called.
 		for (int i = 0; i < subsystems.size(); i++) {
 			schedule(subsystems.get(i).getDefaultTask());
 		}
+		 */
 
 		long durationMs = clock.getMillis();
 		double duration = clock.getSeconds();
@@ -240,5 +246,16 @@ public final class Scheduler {
 				.addData("Scheduled", scheduledTasks.size());
 		telemetry.addData("Behaviors", behaviors.size());
 		//log.info("Time: " + durationMs + "ms, Freq: " + 1.0 / duration + "Hz");
+	}
+
+	public void putPersistentData(String key, String value) {
+		persistentStore.put(key, value);
+	}
+
+	public String getPersistentData(String key) {
+		if (persistentStore.containsKey(key))
+			return persistentStore.get(key);
+		else
+			throw new IllegalArgumentException("Key does not exist");
 	}
 }
