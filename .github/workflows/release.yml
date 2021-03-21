@@ -25,4 +25,4 @@ jobs:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
           SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
           VERSION: ${{ github.ref }}
-        run: ./gradlew publish
+        run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository

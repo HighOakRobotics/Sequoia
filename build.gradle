@@ -6,6 +6,7 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'signing'
+    id("io.github.gradle-nexus.publish-plugin").version("1.0.0")
 }
 
 java {
@@ -50,7 +51,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             pom {
-                groupId = "com.ftc11392.sequoia"
+                groupId = "com.ftc11392"
                 artifactId = "sequoia"
                 version = releasever
                 packaging = "jar"
@@ -93,25 +94,16 @@ publishing {
 
         }
     }
+}
 
+nexusPublishing {
     repositories {
-        maven {
-            /*
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/highoakrobotics/sequoia")
+        sonatype {
+            username = System.getenv("OSSRH_USERNAME")
+            password = System.getenv("OSSRH_TOKEN")
 
-            credentials {
-                username = System.getenv("USERNAME")
-                password = System.getenv("TOKEN")
-            }
-             */
-            name = "OSSRH"
-            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2")
-
-            credentials {
-                username = System.getenv("OSSRH_USERNAME")
-                password = System.getenv("OSSRH_TOKEN")
-            }
+            nexusUrl = uri("https://s01.oss.sonatype.org/service/local/")
+            snapshotRepositoryUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
         }
     }
 }
