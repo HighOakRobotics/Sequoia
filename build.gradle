@@ -51,7 +51,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             pom {
-                groupId = "com.ftc11392"
+                groupId = "com.ftc11392.sequoia"
                 artifactId = "sequoia"
                 version = releasever
                 packaging = "jar"
