@@ -42,6 +42,7 @@ public class SequentialTaskBundle extends TaskBundle {
 	@Override
 	public void loop() {
 		if (tasks.isEmpty() || currentTaskIndex == -1) {
+			running = false;
 			return;
 		}
 

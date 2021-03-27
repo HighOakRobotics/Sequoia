@@ -38,6 +38,7 @@ public class PIDFController {
 		this.kF = kF;
 		this.feedforward = feedforward;
 		this.bias = bias;
+		clock = new Clock();
 	}
 
 	/**
