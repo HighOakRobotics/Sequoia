@@ -9,7 +9,7 @@ import com.ftc11392.sequoia.util.PIDFController;
  */
 public abstract class PIDFSubsystem extends Subsystem {
 	protected final PIDFController controller;
-	private final double setpoint;
+	protected double setpoint;
 	protected boolean enabled = false;
 
 	/**
@@ -27,6 +27,14 @@ public abstract class PIDFSubsystem extends Subsystem {
 
 	public PIDFSubsystem(PIDFController controller, double setpoint) {
 		this(controller, setpoint, new DefaultTask());
+	}
+
+	public double getSetpoint() {
+		return setpoint;
+	}
+
+	public void setSetpoint(double setpoint) {
+		this.setpoint = setpoint;
 	}
 
 	/**
