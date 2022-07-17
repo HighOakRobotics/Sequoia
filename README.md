@@ -7,3 +7,5 @@
 ![Bintray Release](https://github.com/HighOakRobotics/Sequoia/workflows/Bintray%20Release/badge.svg)
 
 Implementation of WPIlib's command-based programming paradigm for FIRST Tech Challenge.
+
+Use `implementation 'com.ftc11392.sequoia:sequoia:0.7.13'`
