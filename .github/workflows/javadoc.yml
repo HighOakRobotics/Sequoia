@@ -1,6 +1,6 @@
 # This workflow will deploy a JAR artifact along with the regular build.
 
-name: OSSRH Maven Deployment
+name: Build Github Pages
 on:
   release:
     types: [created]
